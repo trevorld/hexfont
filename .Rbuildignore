@@ -2,6 +2,7 @@
 ^_pkgdown.yml$
 ^Rakefile$
 ^raw-data$
+^LICENSE.md$
 ^README.html$
 ^README.Rmd$
 ^\.github$
