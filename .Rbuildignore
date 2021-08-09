@@ -1,0 +1,6 @@
+^pkgdown$
+^_pkgdown.yml$
+^Rakefile$
+^raw-data$
+^README.html$
+^README.Rmd$

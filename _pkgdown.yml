@@ -1,0 +1,4 @@
+destination: "../../websites/R/hexfont/"
+url: "https://trevorldavis.com/R/hexfont"
+development:
+    mode: auto
