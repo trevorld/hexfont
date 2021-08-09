@@ -9,7 +9,7 @@ Description: An R data package with all the hex font files from the GNU Unifont 
 URL: https://github.com/trevorld/hexfont
 BugReports: https://github.com/trevorld/hexfont/issues
 License: GPL (>= 2)
-Imports: bittermelon (>= 0.1.0-33)
+Imports: bittermelon (>= 0.1.0-35)
 Remotes: github::trevorld/bittermelon
 Suggests: testthat
 Encoding: UTF-8

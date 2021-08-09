@@ -9,6 +9,8 @@
 * [unifont()](#unifont)
 * [License](#license)
 
+**Please note this README is best [viewed elsewhere](https://trevorldavis.com/R/hexfont) than `github.com`**. `github.com`'s default `line-height` setting causes distracting extraneous horizontal lines to appear when "printing" bitmaps and `github.com` [does not allow using CSS](https://gist.github.com/kivikakk/622b5dcf395e26c49e2334f0eb19e6f9) to set a more reasonable `line-height` value.
+
 ## <a name="overview">Overview</a>
 
 This is an R data package that includes every "hex" font file from the [GNU Unifont](http://unifoundry.com/unifont/index.html) project compressed by `gzip`.  It includes a convenience function that loads several of them as a [{bittermelon}](https://github.com/trevorld/bittermelon) `bm_font()` object.  GNU Unifont is a monoscale bitmap font (8x16 and 16x16 glyphs) that pretty much covers all of the official Unicode glyphs plus several of the artificial scripts in the [(Under-)ConScript Unicode Registry](http://www.kreativekorp.com/ucsur/).
@@ -36,18 +38,21 @@ The function `unifont()` loads in several GNU Unifont hex files at the same time
 | sample | Add circle to "Combining" characters | `FALSE` | 
 
 ```{r unifont, output.class = "bitmap"}
-library("bittermelon")
-library("hexfont")
-# Note Unifont is a **big** font
-system.time(font <- unifont())
-length(font)
-object.size(font)
+library("bittermelon") # remotes::install_github("trevorld/bittermelon")
+library("hexfont") # remotes::install_github("trevorld/hexfont")
+system.time(font <- unifont()) # Unifont is a **big** font
+length(font) |> prettyNum(big.mark = ",") # number of glyphs
+object.size(font) |> format(units = "MB") # memory used
 
 # Mandarin Chinese
-as_bm_list("Ｒ很棒！", font = font) |> bm_call(cbind) |> print()
+as_bm_list("Ｒ很棒！", font = font) |>
+    bm_call(cbind) |> 
+    bm_compress("v")
 
 # Emoji
-as_bm_list("🐭🐲🐵", font = font) |> bm_call(cbind) |> print()
+as_bm_list("🐭🐲🐵", font = font) |>
+    bm_call(cbind) |> 
+    bm_compress("v")
 ```
 
 ## <a name="license">License</a>
