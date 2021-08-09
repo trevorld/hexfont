@@ -1,6 +1,6 @@
 Package: hexfont
 Type: Package
-Title: Unifont hex font files
+Title: Unifont Hex Font Files
 Version: 0.1.0
 Authors@R: c(person("Trevor L", "Davis", role = c("aut", "cre"),
                     email = "trevor.l.davis@gmail.com"),

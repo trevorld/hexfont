@@ -30,9 +30,13 @@ if (require("bittermelon")) {
   object.size(font)
 
   # Mandarin Chinese
-  as_bm_list("Ｒ很棒！", font = font) |> bm_call(cbind) |> print()
+  bml <- as_bm_list("\uff32\u5f88\u68d2\uff01", font = font)
+  bm <- do.call(cbind, bml)
+  print(bm, px = px_ascii)
 
   # Emoji
-  as_bm_list("🐭🐲🐵", font = font) |> bm_call(cbind) |> print()
+  bml <- as_bm_list("\U0001f42d\U0001f432\U0001f435", font = font)
+  bm <- do.call(cbind, bml)
+  print(bm, px = px_ascii)
 }
 }
