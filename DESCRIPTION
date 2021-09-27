@@ -1,7 +1,7 @@
 Package: hexfont
 Type: Package
 Title: Unifont Hex Font Files
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(person("Trevor L", "Davis", role = c("aut", "cre"),
                     email = "trevor.l.davis@gmail.com"),
              person("GNU Unifont authors", role = "cph"))
@@ -10,7 +10,6 @@ URL: https://github.com/trevorld/hexfont
 BugReports: https://github.com/trevorld/hexfont/issues
 License: GPL (>= 2)
 Imports: bittermelon (>= 0.1.0-35)
-Remotes: github::trevorld/bittermelon
 Suggests: testthat
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
