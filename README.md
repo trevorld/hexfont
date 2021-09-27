@@ -1,5 +1,6 @@
 # hexfont <img src="man/figures/logo.png" align="right" width="200px" alt="hexfont hex sticker">
 
+[![CRAN Status Badge](https://www.r-pkg.org/badges/version/hexfont)](https://cran.r-project.org/package=hexfont)
 [![R-CMD-check](https://github.com/trevorld/hexfont/workflows/R-CMD-check/badge.svg)](https://github.com/trevorld/hexfont/actions)
 
 ### Table of Contents
@@ -13,55 +14,55 @@
 
 ## <a name="overview">Overview</a>
 
-This is an R data package that includes every "hex" font file from the [GNU Unifont](http://unifoundry.com/unifont/index.html) project compressed by `gzip`.  It includes a convenience function that loads several of them as a [{bittermelon}](https://github.com/trevorld/bittermelon) `bm_font()` object.  GNU Unifont is a monoscale bitmap font (8x16 and 16x16 glyphs) that pretty much covers all of the official Unicode glyphs plus several of the artificial scripts in the [(Under-)ConScript Unicode Registry](http://www.kreativekorp.com/ucsur/).
+This is an R data package that includes every "hex" font file from the [GNU Unifont](http://unifoundry.com/unifont/index.html) project compressed by `xz`.  It includes a convenience function that loads several of them as a [{bittermelon}](https://github.com/trevorld/bittermelon) `bm_font()` object.  GNU Unifont is a monoscale bitmap font (8x16 and 16x16 glyphs) that pretty much covers all of the official Unicode glyphs plus several of the artificial scripts in the [(Under-)ConScript Unicode Registry](http://www.kreativekorp.com/ucsur/).
 
 ## <a name="hex">Included hex font files</a>
 
 `{hexfont}` includes all the hex font files included in the [GNU Unifont](http://unifoundry.com/unifont/index.html)
 source code distribution.  The version number is stripped from the file names in the `precompiled` directory and
-the hex fonts are all compressed by gzip but other than that the hex fonts are otherwise unchanged.
+the hex fonts are all compressed by `xz` but other than that the hex fonts are otherwise unchanged.
 
 
 ```r
 hex_dir <- system.file("font", package = "hexfont")
-list.files(hex_dir, pattern = ".hex.gz", recursive = TRUE)
+list.files(hex_dir, pattern = ".hex.xz", recursive = TRUE)
 ```
 
 ```
-##  [1] "plane00/alt/codepage-437.hex.gz"           
-##  [2] "plane00/alt/mongolian-vertical.hex.gz"     
-##  [3] "plane00/alt/phags-pa-vertical.hex.gz"      
-##  [4] "plane00/alt/quad-width.hex.gz"             
-##  [5] "plane00/alt/reiwa-vertical.hex.gz"         
-##  [6] "plane00/alt/uni0009-orig.hex.gz"           
-##  [7] "plane00/copyleft.hex.gz"                   
-##  [8] "plane00/custom00.hex.gz"                   
-##  [9] "plane00/hangul-syllables.hex.gz"           
-## [10] "plane00/izmg16-plane00.hex.gz"             
-## [11] "plane00/omit.hex.gz"                       
-## [12] "plane00/plane00-nonprinting.hex.gz"        
-## [13] "plane00/plane00-unassigned.hex.gz"         
-## [14] "plane00/pua.hex.gz"                        
-## [15] "plane00/spaces.hex.gz"                     
-## [16] "plane00/unifont-base.hex.gz"               
-## [17] "plane00/wqy.hex.gz"                        
-## [18] "plane00csur/plane00csur-nonprinting.hex.gz"
-## [19] "plane00csur/plane00csur-spaces.hex.gz"     
-## [20] "plane00csur/plane00csur.hex.gz"            
-## [21] "plane01/plane01-nonprinting.hex.gz"        
-## [22] "plane01/plane01.hex.gz"                    
-## [23] "plane01/space.hex.gz"                      
-## [24] "plane02/izmg16-plane02.hex.gz"             
-## [25] "plane0E/plane0E-nonprinting.hex.gz"        
-## [26] "plane0E/plane0E.hex.gz"                    
-## [27] "plane0Fcsur/plane0Fcsur-nonprinting.hex.gz"
-## [28] "plane0Fcsur/plane0Fcsur.hex.gz"            
-## [29] "precompiled/unifont_jp_sample.hex.gz"      
-## [30] "precompiled/unifont_jp.hex.gz"             
-## [31] "precompiled/unifont_sample.hex.gz"         
-## [32] "precompiled/unifont_upper_sample.hex.gz"   
-## [33] "precompiled/unifont_upper.hex.gz"          
-## [34] "precompiled/unifont.hex.gz"
+##  [1] "plane00/alt/codepage-437.hex.xz"           
+##  [2] "plane00/alt/mongolian-vertical.hex.xz"     
+##  [3] "plane00/alt/phags-pa-vertical.hex.xz"      
+##  [4] "plane00/alt/quad-width.hex.xz"             
+##  [5] "plane00/alt/reiwa-vertical.hex.xz"         
+##  [6] "plane00/alt/uni0009-orig.hex.xz"           
+##  [7] "plane00/copyleft.hex.xz"                   
+##  [8] "plane00/custom00.hex.xz"                   
+##  [9] "plane00/hangul-syllables.hex.xz"           
+## [10] "plane00/izmg16-plane00.hex.xz"             
+## [11] "plane00/omit.hex.xz"                       
+## [12] "plane00/plane00-nonprinting.hex.xz"        
+## [13] "plane00/plane00-unassigned.hex.xz"         
+## [14] "plane00/pua.hex.xz"                        
+## [15] "plane00/spaces.hex.xz"                     
+## [16] "plane00/unifont-base.hex.xz"               
+## [17] "plane00/wqy.hex.xz"                        
+## [18] "plane00csur/plane00csur-nonprinting.hex.xz"
+## [19] "plane00csur/plane00csur-spaces.hex.xz"     
+## [20] "plane00csur/plane00csur.hex.xz"            
+## [21] "plane01/plane01-nonprinting.hex.xz"        
+## [22] "plane01/plane01.hex.xz"                    
+## [23] "plane01/space.hex.xz"                      
+## [24] "plane02/izmg16-plane02.hex.xz"             
+## [25] "plane0E/plane0E-nonprinting.hex.xz"        
+## [26] "plane0E/plane0E.hex.xz"                    
+## [27] "plane0Fcsur/plane0Fcsur-nonprinting.hex.xz"
+## [28] "plane0Fcsur/plane0Fcsur.hex.xz"            
+## [29] "precompiled/unifont_jp_sample.hex.xz"      
+## [30] "precompiled/unifont_jp.hex.xz"             
+## [31] "precompiled/unifont_sample.hex.xz"         
+## [32] "precompiled/unifont_upper_sample.hex.xz"   
+## [33] "precompiled/unifont_upper.hex.xz"          
+## [34] "precompiled/unifont.hex.xz"
 ```
 
 ## <a name="unifont">unifont()</a>
@@ -98,7 +99,7 @@ system.time(font <- unifont()) # Unifont is a **big** font
 
 ```
 ##    user  system elapsed 
-##  41.666   0.096  41.763
+##  42.017   0.088  42.109
 ```
 
 ```r

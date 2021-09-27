@@ -1,5 +1,6 @@
 # hexfont <img src="man/figures/logo.png" align="right" width="200px" alt="hexfont hex sticker">
 
+[![CRAN Status Badge](https://www.r-pkg.org/badges/version/hexfont)](https://cran.r-project.org/package=hexfont)
 [![R-CMD-check](https://github.com/trevorld/hexfont/workflows/R-CMD-check/badge.svg)](https://github.com/trevorld/hexfont/actions)
 
 ### Table of Contents
@@ -13,17 +14,17 @@
 
 ## <a name="overview">Overview</a>
 
-This is an R data package that includes every "hex" font file from the [GNU Unifont](http://unifoundry.com/unifont/index.html) project compressed by `gzip`.  It includes a convenience function that loads several of them as a [{bittermelon}](https://github.com/trevorld/bittermelon) `bm_font()` object.  GNU Unifont is a monoscale bitmap font (8x16 and 16x16 glyphs) that pretty much covers all of the official Unicode glyphs plus several of the artificial scripts in the [(Under-)ConScript Unicode Registry](http://www.kreativekorp.com/ucsur/).
+This is an R data package that includes every "hex" font file from the [GNU Unifont](http://unifoundry.com/unifont/index.html) project compressed by `xz`.  It includes a convenience function that loads several of them as a [{bittermelon}](https://github.com/trevorld/bittermelon) `bm_font()` object.  GNU Unifont is a monoscale bitmap font (8x16 and 16x16 glyphs) that pretty much covers all of the official Unicode glyphs plus several of the artificial scripts in the [(Under-)ConScript Unicode Registry](http://www.kreativekorp.com/ucsur/).
 
 ## <a name="hex">Included hex font files</a>
 
 `{hexfont}` includes all the hex font files included in the [GNU Unifont](http://unifoundry.com/unifont/index.html)
 source code distribution.  The version number is stripped from the file names in the `precompiled` directory and
-the hex fonts are all compressed by gzip but other than that the hex fonts are otherwise unchanged.
+the hex fonts are all compressed by `xz` but other than that the hex fonts are otherwise unchanged.
 
 ```{r included}
 hex_dir <- system.file("font", package = "hexfont")
-list.files(hex_dir, pattern = ".hex.gz", recursive = TRUE)
+list.files(hex_dir, pattern = ".hex.xz", recursive = TRUE)
 ```
 
 ## <a name="unifont">unifont()</a>
