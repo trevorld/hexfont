@@ -99,7 +99,7 @@ system.time(font <- unifont()) # Unifont is a **big** font
 
 ```
 ##    user  system elapsed 
-##  42.017   0.088  42.109
+##  48.190   0.108  48.299
 ```
 
 ```r
@@ -107,7 +107,7 @@ length(font) |> prettyNum(big.mark = ",") # number of glyphs
 ```
 
 ```
-## [1] "77,418"
+## [1] "78,121"
 ```
 
 ```r
@@ -115,7 +115,7 @@ object.size(font) |> format(units = "MB") # memory used
 ```
 
 ```
-## [1] "116 Mb"
+## [1] "117 Mb"
 ```
 
 ```r
