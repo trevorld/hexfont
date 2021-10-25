@@ -1,7 +1,7 @@
 test_that("unifont() works", {
 
     font <- unifont()
-    expect_length(font, 77418)
+    expect_length(font, 78121L)
 
     skip_on_os("windows")
 
