@@ -1,9 +1,10 @@
 Package: hexfont
 Type: Package
 Title: Unifont Hex Font Files
-Version: 0.2.0
-Authors@R: c(person("Trevor L", "Davis", role = c("aut", "cre"),
-                    email = "trevor.l.davis@gmail.com"),
+Version: 0.2.0-2
+Authors@R: c(person("Trevor L", "Davis", role=c("aut", "cre"),
+             email="trevor.l.davis@gmail.com",
+             comment = c(ORCID = "0000-0001-6341-4639")),
              person("GNU Unifont authors", role = "cph"))
 Description: An R data package with all the hex font files from the GNU Unifont Project (v13.0.06) compressed by 'xz'.  Provides a convenience function for loading in several of them at the same time as a 'bittermelon' 'bm_font' object.
 URL: https://github.com/trevorld/hexfont

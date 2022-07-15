@@ -9,21 +9,22 @@
 #' @param sample Add circle to "Combining" characters.
 #' @return A [bittermelon::bm_font()] object.
 #' @examples
-#' if (require("bittermelon")) {
-#'   # Note Unifont is a **big** font
-#'   system.time(font <- unifont())
-#'   length(font)
-#'   object.size(font)
+#' \dontrun{ # Note Unifont is a **big** font
+#'   if (require("bittermelon")) {
+#'     system.time(font <- unifont())
+#'     length(font)
+#'     object.size(font)
 #'
-#'   # Mandarin Chinese
-#'   bml <- as_bm_list("\uff32\u5f88\u68d2\uff01", font = font)
-#'   bm <- do.call(cbind, bml)
-#'   print(bm, px = px_ascii)
+#'     # Mandarin Chinese
+#'     bml <- as_bm_list("\uff32\u5f88\u68d2\uff01", font = font)
+#'     bm <- do.call(cbind, bml)
+#'     print(bm, px = px_ascii)
 #'
-#'   # Emoji
-#'   bml <- as_bm_list("\U0001f42d\U0001f432\U0001f435", font = font)
-#'   bm <- do.call(cbind, bml)
-#'   print(bm, px = px_ascii)
+#'     # Emoji
+#'     bml <- as_bm_list("\U0001f42d\U0001f432\U0001f435", font = font)
+#'     bm <- do.call(cbind, bml)
+#'     print(bm, px = px_ascii)
+#'   }
 #' }
 #' @import bittermelon
 #' @export
