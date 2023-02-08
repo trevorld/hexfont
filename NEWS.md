@@ -1,4 +1,4 @@
-hexfont 0.2.0
+hexfont 0.2.1
 =============
 
 * We update the hex font files to match [GNU Unifont](http://unifoundry.com/unifont/index.html) v14.0.01 (previously matched v13.0.06).
