@@ -1,7 +1,11 @@
-# hexfont <img src="man/figures/logo.png" align="right" width="200px" alt="hexfont hex sticker">
-
-[![CRAN Status Badge](https://www.r-pkg.org/badges/version/hexfont)](https://cran.r-project.org/package=hexfont)
-[![R-CMD-check](https://github.com/trevorld/hexfont/workflows/R-CMD-check/badge.svg)](https://github.com/trevorld/hexfont/actions)
+---
+title: "Introduction to hexfont"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to hexfont}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
 
 ### Table of Contents
 
@@ -9,8 +13,6 @@
 * [Included hex font files](#hex)
 * [Examples](#examples)
 * [License](#license)
-
-**Please note this README is best [viewed elsewhere](https://trevorldavis.com/R/hexfont/) than `github.com`**. `github.com`'s default `line-height` setting causes distracting extraneous horizontal lines to appear when "printing" bitmaps and `github.com` [does not allow using CSS](https://gist.github.com/kivikakk/622b5dcf395e26c49e2334f0eb19e6f9) to set a more reasonable `line-height` value.
 
 ## <a name="overview">Overview</a>
 
@@ -99,7 +101,7 @@ system.time(font <- unifont()) # Unifont is a **big** font
 
 ```
 ##    user  system elapsed 
-##  59.911   0.131  60.051
+##  53.093   0.151  53.257
 ```
 
 ```r

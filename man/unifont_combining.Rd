@@ -26,7 +26,23 @@ for all the "combining" characters in Unifont.
 }
 \examples{
   df <- unifont_combining()
-  head(df)
+  utils::head(df)
+
+\dontrun{ # Unifont is a **big** font, will take more than 10 seconds
+  if (require("bittermelon")) {
+    system.time(font <- unifont())
+
+    # Tengwar with combining glyphs
+    bml <- as_bm_list("\ue004\ue014\ue04a\ue005\ue000\ue040\ue022\ue04a\ue003\ue04e",
+                      font = font)
+    to_raise <- which(names(bml) \%in\% c("U+E04A", "U+E04E"))
+    bml[to_raise] <- bm_shift(bml[to_raise], top = 1L)
+    bml <- bm_compose(bml, pua_combining = unifont_combining())
+    bml <- bm_pad(bml, type = "trim", left = 1L, right = 0L)
+    bm <- bm_call(bml, cbind)
+    print(bm, px = px_ascii)
+  }
+}
 }
 \seealso{
 Can be used with the \code{pua_combining} argument of \code{\link[bittermelon:bm_compose]{bittermelon::bm_compose()}}

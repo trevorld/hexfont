@@ -23,20 +23,18 @@ The function \code{unifont()} loads in several GNU Unifont hex files as a
 single \code{\link[bittermelon:bm_font]{bittermelon::bm_font()}} object.
 }
 \examples{
-\dontrun{ # Note Unifont is a **big** font
+\dontrun{ # Unifont is a **big** font, will take more than 10 seconds
   if (require("bittermelon")) {
     system.time(font <- unifont())
     length(font)
     object.size(font)
 
     # Mandarin Chinese
-    bml <- as_bm_list("\uff32\u5f88\u68d2\uff01", font = font)
-    bm <- do.call(cbind, bml)
+    bml <- as_bm_bitmap("\uff32\u5f88\u68d2\uff01", font = font)
     print(bm, px = px_ascii)
 
     # Emoji
-    bml <- as_bm_list("\U0001f42d\U0001f432\U0001f435", font = font)
-    bm <- do.call(cbind, bml)
+    bml <- as_bm_bitmap("\U0001f42d\U0001f432\U0001f435", font = font)
     print(bm, px = px_ascii)
   }
 }

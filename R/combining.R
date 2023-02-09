@@ -15,7 +15,23 @@
 #'           and [bittermelon::as_bm_bitmap()].
 #' @examples
 #'   df <- unifont_combining()
-#'   head(df)
+#'   utils::head(df)
+#'
+#' \dontrun{ # Unifont is a **big** font, will take more than 10 seconds
+#'   if (require("bittermelon")) {
+#'     system.time(font <- unifont())
+#'
+#'     # Tengwar with combining glyphs
+#'     bml <- as_bm_list("\ue004\ue014\ue04a\ue005\ue000\ue040\ue022\ue04a\ue003\ue04e",
+#'                       font = font)
+#'     to_raise <- which(names(bml) %in% c("U+E04A", "U+E04E"))
+#'     bml[to_raise] <- bm_shift(bml[to_raise], top = 1L)
+#'     bml <- bm_compose(bml, pua_combining = unifont_combining())
+#'     bml <- bm_pad(bml, type = "trim", left = 1L, right = 0L)
+#'     bm <- bm_call(bml, cbind)
+#'     print(bm, px = px_ascii)
+#'   }
+#' }
 #' @export
 unifont_combining <- function(upper = TRUE, csur = TRUE, unicode = FALSE) {
     font_dir <- system.file("font", package = "hexfont")
@@ -31,8 +47,9 @@ unifont_combining <- function(upper = TRUE, csur = TRUE, unicode = FALSE) {
         combining_files <- grep("csur-combining.txt$", combining_files,
                                 value = TRUE)
     read_fn <- function(x) {
-        read.delim(x, header = FALSE, sep = ":",
-                   col.names = c("ucp", "width"), stringsAsFactors = FALSE)
+        utils::read.delim(x, header = FALSE, sep = ":",
+                          col.names = c("ucp", "width"),
+                          stringsAsFactors = FALSE)
     }
     dfs <- lapply(combining_files, read_fn)
     df <- do.call(rbind, dfs)
