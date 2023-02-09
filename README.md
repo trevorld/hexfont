@@ -7,7 +7,7 @@
 
 * [Overview](#overview)
 * [Included hex font files](#hex)
-* [unifont()](#unifont)
+* [Examples](#examples)
 * [License](#license)
 
 **Please note this README is best [viewed elsewhere](https://trevorldavis.com/R/hexfont/) than `github.com`**. `github.com`'s default `line-height` setting causes distracting extraneous horizontal lines to appear when "printing" bitmaps and `github.com` [does not allow using CSS](https://gist.github.com/kivikakk/622b5dcf395e26c49e2334f0eb19e6f9) to set a more reasonable `line-height` value.
@@ -65,9 +65,9 @@ list.files(hex_dir, pattern = ".hex.xz", recursive = TRUE)
 ## [34] "precompiled/unifont.hex.xz"
 ```
 
-## <a name="unifont">unifont()</a>
+## <a name="examples">Examples</a>
 
-The function `unifont()` loads in several GNU Unifont hex files at the same time as a [{bittermelon}](https://github.com/trevorld/bittermelon) `bm_font()` object.  Arguments:
+The main function `unifont()` loads in several GNU Unifont hex files at the same time as a [{bittermelon}](https://github.com/trevorld/bittermelon) `bm_font()` object.  Arguments:
 
 | Argument | Meaning | Default |
 --- | --- | ---
@@ -99,7 +99,7 @@ system.time(font <- unifont()) # Unifont is a **big** font
 
 ```
 ##    user  system elapsed 
-##  48.190   0.108  48.299
+##  46.878   0.099  47.030
 ```
 
 ```r
@@ -120,8 +120,7 @@ object.size(font) |> format(units = "MB") # memory used
 
 ```r
 # Mandarin Chinese
-as_bm_list("Ｒ很棒！", font = font) |>
-    bm_call(cbind) |> 
+as_bm_bitmap("Ｒ很棒！", font = font) |>
     bm_compress("v")
 ```
 
@@ -138,8 +137,7 @@ as_bm_list("Ｒ很棒！", font = font) |>
 
 ```r
 # Emoji
-as_bm_list("🐭🐲🐵", font = font) |>
-    bm_call(cbind) |> 
+as_bm_bitmap("🐭🐲🐵", font = font) |>
     bm_compress("v")
 ```
 
@@ -152,6 +150,40 @@ as_bm_list("🐭🐲🐵", font = font) |>
 ##   ▀▄  ▀▀▀  ▄▀   ▀▀▀▀▀███▀▀█████    █ ▀▄▄▄▄▀ █   
 ##     ▀▀▄▄▄▀▀        ▄███   ████▀     ▀▀▄▄▄▄▀▀    
 ##                   ▀▀▀     ▀▀▀
+```
+
+```r
+# Klingon
+as_bm_list("", font = font) |>
+    bm_pad(type = "trim", left = 1L, right = 1L) |>
+    bm_call(cbind) |>
+    bm_compress("v")
+```
+
+```
+##                                                                               
+##     ▄█▄ ▄▄██▀▀  ▀▀████████               ▄▀       ▄█▄    ▄█▀  ▀█▄    ▄▄       
+##  ▄▄██████▀            ▀██ ▀            ▄█▀       ███▀▀  ███    ██   ▀████████ 
+##   ▀██  ██             ▄███    ▄█      ▄██       ██▀      ▀██▄▄█▀      ██▀ ▀██ 
+##    ▀    █▄           ███      ███▄▄▄▄▄██      ▄███        ▀███▀      ▄█▀   █▀ 
+##          █▄          ▀█▄      ██▀▀▀▀▀▀███    ▄██████▄       ▀█▄     ▄█▀   █▀  
+##           ▀▄           ▀▀▄   ▄▀        ▀█▄         ▀▀▄        ▀▀▄  ▄▀    ▀    
+## 
+```
+
+```r
+# Tengwar with combining glyphs
+bml <- as_bm_list("", font = font)
+to_raise <- which(names(bml) %in% c("U+E04A", "U+E04E"))
+bml[to_raise] <- bm_shift(bml[to_raise], top = 1L)
+bml |> bm_compose(pua_combining = unifont_combining()) |>
+    bm_pad(type = "trim", left = 1L, right = 1L) |>
+    bm_call(cbind) |>
+    bm_compress("v")
+```
+
+```
+## Error in unifont_combining(): could not find function "unifont_combining"
 ```
 
 ## <a name="license">License</a>

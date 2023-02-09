@@ -1,3 +1,9 @@
+hexfont 0.3.0
+=============
+
+* We update the hex font files to match [GNU Unifont](http://unifoundry.com/unifont/index.html) v15.0.01 (previously matched v14.0.01) (#3).
+* `unifont_combining()` returns a character vector of Unicode code points that are "combining" glyphs (#4).
+
 hexfont 0.2.1
 =============
 

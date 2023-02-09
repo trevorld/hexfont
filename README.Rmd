@@ -7,7 +7,7 @@
 
 * [Overview](#overview)
 * [Included hex font files](#hex)
-* [unifont()](#unifont)
+* [Examples](#examples)
 * [License](#license)
 
 **Please note this README is best [viewed elsewhere](https://trevorldavis.com/R/hexfont/) than `github.com`**. `github.com`'s default `line-height` setting causes distracting extraneous horizontal lines to appear when "printing" bitmaps and `github.com` [does not allow using CSS](https://gist.github.com/kivikakk/622b5dcf395e26c49e2334f0eb19e6f9) to set a more reasonable `line-height` value.
@@ -27,9 +27,9 @@ hex_dir <- system.file("font", package = "hexfont")
 list.files(hex_dir, pattern = ".hex.xz", recursive = TRUE)
 ```
 
-## <a name="unifont">unifont()</a>
+## <a name="examples">Examples</a>
 
-The function `unifont()` loads in several GNU Unifont hex files at the same time as a [{bittermelon}](https://github.com/trevorld/bittermelon) `bm_font()` object.  Arguments:
+The main function `unifont()` loads in several GNU Unifont hex files at the same time as a [{bittermelon}](https://github.com/trevorld/bittermelon) `bm_font()` object.  Arguments:
 
 | Argument | Meaning | Default |
 --- | --- | ---
@@ -46,13 +46,26 @@ length(font) |> prettyNum(big.mark = ",") # number of glyphs
 object.size(font) |> format(units = "MB") # memory used
 
 # Mandarin Chinese
-as_bm_list("Ｒ很棒！", font = font) |>
-    bm_call(cbind) |> 
+as_bm_bitmap("Ｒ很棒！", font = font) |>
     bm_compress("v")
 
 # Emoji
-as_bm_list("🐭🐲🐵", font = font) |>
-    bm_call(cbind) |> 
+as_bm_bitmap("🐭🐲🐵", font = font) |>
+    bm_compress("v")
+
+# Klingon
+as_bm_list("", font = font) |>
+    bm_pad(type = "trim", left = 1L, right = 1L) |>
+    bm_call(cbind) |>
+    bm_compress("v")
+
+# Tengwar with combining glyphs
+bml <- as_bm_list("", font = font)
+to_raise <- which(names(bml) %in% c("U+E04A", "U+E04E"))
+bml[to_raise] <- bm_shift(bml[to_raise], top = 1L)
+bml |> bm_compose(pua_combining = unifont_combining()) |>
+    bm_pad(type = "trim", left = 1L, right = 1L) |>
+    bm_call(cbind) |>
     bm_compress("v")
 ```
 

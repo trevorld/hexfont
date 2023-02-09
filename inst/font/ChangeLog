@@ -1,4 +1,204 @@
+2022-09-13  Paul Hardy <unifoundry@unifoundry.com>
+	* Version 15.0.01.
+	* font/Makefile:
+	  - Added OTFDEST definition for installing OpenType fonts.
+	  - Install OpenType font files alongside TrueType font files,
+	    tentatively in preparation for replacing TrueType font files
+	    for the Unicode 16.0.0 release unless there is a reason to
+	    install both.
+	* font/plane00/plane00-unassigned.hex:
+	  - Removed filler glyphs for two new Kannada and Lao glyphs.
+	* font/plane00/unifont-base.hex:
+	  - Paul Hardy:
+	    o Added new Unicode 15.0.0 Kannada glyph U+0CF3.
+	    o Added new Unicode 15.0.0 Lao glyph U+0ECE.
+	    o Modified U+0264 (Latin Small Letter Ram's Horn) to more
+	      closely  resemble its revised form, by request.
+	  - David Corbett:
+	    o Moved Arabic glyph U+08AC up.
+	  - Johnnie Weaver adjusted U+26CA (Turned Black Shogi Piece).
+	* font/plane00csur/plane00csur.hex:
+	  - Added Syai (U+E1D0..U+E1FF).
+	  - Added Sarkai (U+E360..U+E37F).
+	  - David Corbett contributed Iranic (U+ED80..U+EDAF).
+	* font/plane01/noscript-ranges.txt:
+	  - Removed ranges for new Unicode 15.0.0 blocks.
+	* font/plane00/unassigned-ranges.txt:
+	  - Added unassigned ranges for newly-added glyph blocks and
+	    filled in missing places in existing glyph blocks.
+	* font/plane01/plane01.hex:
+	  - Paul Hardy added new glyphs in these ranges:
+	    o Khojki (U+1123F..U+11241).
+	    o Devanagari Extended-A (U+11B00..U+11B5F).
+	    o Kawi (U+11F00..U+11F5F).
+	    o Kaktovik Numerals (U+1D2C0..U+1D2DF).
+	    o Cyrillic Exntended-D (U+1E030..U+1E08F).
+	    o Transport and Map Symbol glyph U+1F6DC.
+	    o Alchemical Symbols (U+1F700..U+1F77F).
+	    o Geometric Shapes Extended glyph U+1F7D9.
+	    o Symbols and Pictographs Extended-A (U+1FA70..U+1FAFF).
+	  - David Corbett added new glyphs in these ranges:
+	    o Arabic Extended-C (U+10EFD..U+10EFF), new in Unicode 15.0.0.
+	    o Latin Extended-G (U+1DF25..U+1DF2A).
+	  - Johnnie Weaver added new glyphs in these ranges:
+	    o Small Kana Extension (U+1B132 and U+1B155).
+	    o Nag Mundari (U+1E4D0..U+1E4FF).
+	* src/unibmp2hex.c:
+	  - Added as double-width scripts:
+	    o Devanagari Extended-A (U+11B00..U+11B5F).
+	    o Kawi (U+11F00..U+11F5F).
+
+2022-06-04  Paul Hardy <unifoundry@unifoundry.com>
+	* Version 14.0.04.
+	* doc/unicoverage.texi:
+	  - Documented new "-n" option.
+	* font/coverage.dat:
+	  - Added 0F1900-0F19FF PUA (CSUR/UCSUR): Sitelen Pona.
+	* font/plane00/unifont-base.hex:
+	  - U+16A0..U+16FF (Runic) David Corbett adjusted several glyphs
+	    (Savannah bug 62500).
+	  - U+A99A (Javanese) David Corbett removed a stray dot
+	    (Savannah bug 62499).
+	  - U+FC33 David Corbett corrected this Arabic glyph
+	    (Savannah bug 62359).
+	* font/plane01/noscript-ranges.txt:
+	  - Adjusted ranges in U+11700..U+1174F for Ahom glyphs in Unicode
+	    14.0.0 (Savannah bug 62331).
+	* font/ttfsrc/Makefile:
+	  - Removed "clean" from target "all" to support parallel builds,
+	    as reported by Hideki Yamane (Savannah bug 62537).
+	  - Changed "clean" target to remove *.hex and *.txt; no *.bdf
+            files are copied to that directory now, so *.bdf was removed
+	    from the "clean" target.
+	  - Changed "distclean" target to remove *.sfd, *.ttf, and *.otf.
+	* man/unicoverage.1:
+	  - Documented new "-n" option.
+	* src/unicoverage.c:
+	  - Adjusted column spacing for better listing of Planes 1-15.
+	  - Added "-n" option to print number of glyphs in each range
+	    instead of percent coverage.
+
+2022-04-17  Paul Hardy <unifoundry@unifoundry.com>
+	* Version 14.0.03.
+	* ChangeLog: fixed lines that do not begin with <TAB> character.
+	* doc directory:
+	  - Added hex2otf.texi, from hex2otf.1 man page written by
+	    何志翔 (He Zhixiang).
+	  - Removed a blank node in hex2bdf.texi.
+	  - Updated other .texi files to refer to hex2otf and patched
+	    some previous text.
+	  - Added acute accent to "González" in hex2sfd.texi.
+	  - Updated unifont.texi.
+	* font/Makefile:
+	  - Updated copyright for 2022.
+	  - Updated font building to support hex2otf OpenType builds.
+	  - Changed COMBINING environment variable for unifont_jp build
+	    from "combining" to "combining-jp" for more stable parallel
+	    font builds.
+	* font/plane00csur/plane00csur.hex:
+	  - Added Xaîni (U+E2D0..U+E2FF).
+	  - Added Ophidian (U+E5E0..U+E5FF).
+	  - Added Niji (U+ED40..U+ED5F).
+	* font/plane00csur/combining.txt:
+	  - Removed extraneous entries for Tengwar CSUR code points
+	    U+E05C, U+#05D, U+E06D, U+E06E.
+	* font/plane00csur/unassigned-ranges.txt:
+	  - Modified for Xaîni, Unifon, Unifon Extended, Ophidian,
+	    and Niji.
+	* font/plane01/plane01-combining.txt:
+	  - Removed extraneous code point U+11D92.
+	* font/plane0Fcsur/plane0Fcsur.hex:
+	  - Added Sitelen Pona (U+F1900..U+F19FF).
+	  - Added Shidinn (U+F1B00..U+F1C3F).
+	* font/plane0Fcsur/plane0Fcsur-nonprinting.hex:
+	  - Added unassigned code points for Sitelen Pona (U+F1900..U+F19FF).
+	  - Added unassigned code points for Shidann (U+F1B00..U+F1C3F).
+	* font/ttfsrc/Makefile:
+	  - Updated copyright for 2022.
+	  - Added support for hex2otf OpenType font building.
+	  - Modifiied "clean" and "distclean" targets to use FONTFILE and
+	    COMBINING environment variables for more stable parallel font
+	    builds.
+	* man directory:
+	  - Added hex2otf.1 man page for hex2otf program, written
+	    by 何志翔 (He Zhixiang).
+	  - Updated all other man pages to include hex2otf(1).
+	  - Added acute accent to "González" in hex2sfd.1.  This
+	    does not render in the man utility, but does with
+	    groff output.
+	* src/Makefile: Added support for the new hex2otf program.  This
+	  includes compiling only the hex2otf.c program with the compile
+	  flag "-std=c99", as the other C programs follow C89 syntax.
+	  Adding this flag allows compiling on systems that still use
+	  gcc 4.2.1 because of its being the last version of gcc that
+	  was licensed under GPLv2.
+	* src/hex2otf.c: Added new program, contributed by 何志翔
+	  (He Zhixiang).  This program will directly convert Unifont
+	  .hex file inputs to an OpenType font, with or without using
+	  combining mark files.
+	* src/unibmp2hex.c:
+	  - Added support for 24 bit per pixel RGB .bmp files with
+	    the standard 40-byte BITMAPINFOHEADER device-independent
+	    bitmap (DIB) file header.
+
+2022-03-06  Paul Hardy <unifoundry@unifoundry.com>
+	* Version 14.0.02.
+	* font/Makefile: added creation of unifont_jp-14.0.02.bmp.
+	* font/plane00/unifont-base.hex:
+	  - Modified glyphs U+017F, U+A7D6, and U+A7D7 to have similar shapes.
+	  - David Corbett contributed these modified Hebrew glyphs:
+	    U+05BA, U+05EF, U+05F3, U+05F4, U+FB21, U+FB22, U+FB23,
+	    U+FB24, U+FB25, U+FB26, U+FB27, U+FB28, U+FB2E, U+FB4C,
+	    U+FB4D, and U+FB4E.
+	  - Johnnie Weaver modified Cherokee letter Quo (Ꮙ, ꮙ)
+	    (U+13C9, U+AB99) so that it less-closely resembles
+	    Cherokee letter Tse (Ꮴ, ꮴ) (U+13E4, U+ABB4).
+	  - Modified Tagalog glyph U+1705 and changed U+1707 to resemble
+	    the new U+170D glyph.
+	  - Modified U+203A to be symmetrical to U+2039 (Savannah bug 62108).
+	  - Lowered U+20A0 (Won sign) by one row.
+	  - Modified U+25E2..U+25E5 so glyphs extend to far corners for
+	    Teletext rendering, and modified U+25F8..U+25FF to match
+	    the enlarged outlines of U+25E2..U+25E5 for compatibility
+	    in non-Teletext use.
+	  - Corrected U+29A2 angle direction (Savannah bug 61260).
+	  - Modified Supplemental Punctuation code points U+2E55..U+2E5C.
+	  - Johnnie Weaver modified Latin Extended-E DZ and TS digraphs
+	    with retroflex hooks (U+AB66 and U+AB67) so that they match up
+	    with their counterparts (U+02A3 and U+02A6, respectively).
+	  - Modified U+FB01 to look like a more traditional "fi" ligature.
+	* font/plane01/noscript-ranges.txt:
+	  - Removed U+1AFF0..U+1AFFF for Kana Extended-B (Savannah bug 61181).
+	* font/plane01/plane01.hex:
+	  - Modified Cypro-Minoan glyph U+12FDB (reported by David Corbett).
+	  - Adjusted several Brahmi glyphs (U+11000..U+1107F).
+	  - David Corbett modified Miao glyphs U+16F50, U+16F51, U+16F52,
+	    U+16F53, U+16F87, U+16F8F, U+16F90, U+16F91, and U+16F92.
+	  - Modified Znamenny glyphs (U+1CF00..U+1CF09).
+	  - Modified U+1FB3C..U+1FB6F for better Teletext rendering.
+	    Glyphs extend to far corners, 1/2-width guideline, and
+	    at least to 1/3-height and 2/3-height guidelines matching
+	    Block Sextant (U+1FB00..U+1FB3B) guidelines.  Some overlap
+	    between paired glyphs exists so that:
+	      o Adjacent glyphs with slope greater than 1 never shift
+	        2 pixels at once along the x-axis, and
+	      o Adjacent glyphs with slope less than 1 never shift
+	        2 pixels at once along the y-axis.
+	    The aspect ratios between Unifont and Teletext differ and
+	    Unifont glyphs cannot be divided vertically into exact thirds,
+	    so any result is a matter of balancing tradeoffs.  Thanks to
+	    Rebecca Bettencourt for her feedback and insight on this, and
+	    for the part she played in helping to get these code points
+	    into Unicode.
+	* font/plane01/plane01-combining.txt:
+	  - Patched widths for Old Uyghur glyphs U+10F82, U+10F83, U+10F84,
+	    and U+10F85 to have offsets of 0 (Reported by David Corbett).
+	  - Patched widths for Brahmi glyphs U+11070, U+11073, U+11074,
+	    and U+1107F to have offsets of -16 (reported by David Corbett).
+	* src/unipagecount.c: moved top row labels 2 spaces to the right.
+
 2021-09-14  Paul Hardy <unifoundry@unifoundry.com>
+	* Version 14.0.01.
 	* font/plane00/plane00-combining.txt: Updated for Unicode 14.0.0.
 	* font/plane00/plane00-nonprinting.hex: Updated for Unicode 14.0.0.
 	* font/plane00/unifont-base.hex:
@@ -71,6 +271,7 @@
 	* font/plane01/unassigned-ranges.txt: Updated for Unicode 14.0.0.
 
 2021-02-13  Paul Hardy <unifoundry@unifoundry.com>
+	* Version 13.0.06
 	* 210205_Unifoundry_Memorandum.pdf: added legal memorandum.
 	* font/Makefile:
 	  - Updated copyright for 2021.
@@ -156,8 +357,8 @@
 	    o U+EBA0..U+EBDF Cistercian Numerals:
 	      - Digits 0-9 are non-combining;
 	      - Digits 10-90, 100-900, and 1000-9000 are combining.
-                A vertical staff for zero, U+EBA0, can be used as
-                the non-combining base for digits higher than 9.
+	        A vertical staff for zero, U+EBA0, can be used as
+	        the non-combining base for digits higher than 9.
 	* font/plane01/plane01.hex:
 	  - Johnnie Weaver redrew Elbasan (U+10500..U+1052F) and
 	    Caucasian Albanian (U+10530..U+1056F).
@@ -247,7 +448,7 @@
 	  as per errata that unicode.org has published for Unicode 13.0.0.
 	* font/plane01/plane01.hex:
 	  - David Corbett modified some glyphs in the Chorasmian block
-            (U+10FB0..U+10FCF) (Savannah bug 58137).
+	    (U+10FB0..U+10FCF) (Savannah bug 58137).
 	  - David Corbett modified U+1144D (NEWA COMMA) to resemble the
 	    new U+1145A (NEWA DOUBLE COMMA) (Savannah bug 58192).
 	  - Rebecca Bettencourt updated U+1FB3C..U+1FB6B in the Symbols
@@ -737,9 +938,9 @@
 	    the current and following glyphs.
 	* font/plane00/unifont-base.hex:
 	  - Updated Tibetan glyphs (U+0F00..U+0FFF) to make most of them
-            single-width.
-          - Updated some Tai Le glyphs (U+1950..U+197F) with glyphs
-            from David Corbett.
+	    single-width.
+	  - Updated some Tai Le glyphs (U+1950..U+197F) with glyphs
+	    from David Corbett.
 	  - Replaced Lepcha (U+1C00..U+1C4F) with glyphs from David Corbett.
 	  - Updated Coptic with suggestions from David Corbett; moved
 	    U+2CEF left by one column.
@@ -798,7 +999,7 @@
 	    suggested by David Corbett.
 	  - U+0400..U+04FF Cyrillic
 	  - U+0500..U+052F Cyrillic Supplement
-          - U+0590..U+05FF Hebrew
+	  - U+0590..U+05FF Hebrew
 	  - U+0600..U+06FF Arabic
 	  - U+0750..U+077F Arabic Supplement
 	  - U+0780..U+07BF Thaana
@@ -869,7 +1070,7 @@
 	     o U+011180..U+0111DF Sharada
 	     o U+011C70..U+011CBF Marchen: some glyphs modified
 	     o U+011D00..U+011D5F Masaram Gondi
-             o U+016F00..U+016F9F Miao
+	     o U+016F00..U+016F9F Miao
 	     o U+01D400..U+01D7FF Mathematical Alphanumeric Symbols: added
 	       serifs to iotas.
 	     o U+01EE00..U+01EEFF Arabic Mathematical Alphabetic Symbols
@@ -1045,7 +1246,7 @@
 	  made from Unifont 10.0.01 release onwards.
 	* src/unibmp2hex.c: all CJK glyphs in the range U+4E00..u+9FFF
 	  are double width again; commented out the line that sets
-          U+9FD8..U+9FE9 to be quadruple width.
+	  U+9FD8..U+9FE9 to be quadruple width.
 	* src/hex2sfd:
 	  - Modified to use new second field in combining characters txt
 	    files as the x-axis offset of combining characters.
@@ -1484,9 +1685,9 @@
 	  - Create font/compiled/plane00.html along with
 	    font/compiled/plane01.html in "png" and "bmp" targets.
 	* font/plane01/plane01.hex:
-          - Added one glyph inadvertently omitted from Old Italic:
-            U+01031F (Paul Hardy).
-          - Improved animals in U+01F400..U+01F43F (Nils Dagsson Moskopp).
+	  - Added one glyph inadvertently omitted from Old Italic:
+	    U+01031F (Paul Hardy).
+	  - Improved animals in U+01F400..U+01F43F (Nils Dagsson Moskopp).
 	  - Added more scripts:
 	     U+010350..U+01037F Old Permic (Paul Hardy)
 	     U+01F650..U+01F67F Ornamental Dingbats (Paul Hardy)
@@ -1659,7 +1860,7 @@
 	  - Anonymous1 and Paul Hardy redrew U+262F (yin-yang).
 	* font/plane01/plane01.hex:
 	  - Paul Hardy added [in order of appearance in Uniocde Plane 1 /
-            the SMP]: Meroitic Hieroglyphs, Meroitic Cursive, Avestan,
+	    the SMP]: Meroitic Hieroglyphs, Meroitic Cursive, Avestan,
 	    Inscriptional Parthian, Inscriptional Pahlavi, Psalter Pahlavi,
 	    Old Turkic, Rumi Numeral Symbols, Brahmi, Kaithi, Kana Supplement,
 	    Shorthand Format Controls, Emoticons, and Alchemical Symbols.
@@ -1776,7 +1977,7 @@
 	* Makefiles:
 	  - Updated date for new release.
 	  - Added Qianqian Fang's name to COPYRIGHT strings, for his glyph
-            contributions in "font/plane00/wqy.hex".
+	    contributions in "font/plane00/wqy.hex".
 	* hangul/hangul-generation.html: removed references to three footer
 	  "<img>" links that pointed to external websites.  Those external
 	  icons were saved locally when the original web page
@@ -1794,7 +1995,7 @@
 2014-02-02  Paul Hardy  <unifoundry@unifoundry.com>
 
 	* Version: 6.3.20140202.
-        * Makefiles: updated date for new release.
+	* Makefiles: updated date for new release.
 	* NEWS: updated for new release.
 	* README: updated for new release, notably mentioning that
 	  "font/hexsrc" has been renamed to "font/plane00".
@@ -1820,21 +2021,21 @@
 	  because the latter doesn't contain glyphs for U+FFFE or U+FFFF
 	  (removed to appease MS Windows).
 	* font/Makefile (hex): added egrep -v "^FFF[EF]" to make sure
-          U+FFFE and U+FFFF are removed from font, for Windows XP.
+	  U+FFFE and U+FFFF are removed from font, for Windows XP.
 	* font/plane00: new name of previous "font/hexsrc" directory, now
 	  that this package contains multiple Unicode planes.
 	* font/plane00/README: updated to mention new "omit.hex" file.
 	* font/plane00/bmp-combining.txt: formerly "font/ttfsrc/combining.txt".
-        * font/plane00/nonprinting.hex: removed U+FFFE and U+FFFF to
-          appease MS Windows XP (see font/plane00/omit.hex entry below).
-        * font/plane00/omit.hex: consists of U+FFFE and U+FFFF, for the
-          sake of MS Windows XP.
-        * font/plane00/unifont-base.hex: Further tweaks to APL glyphs.
-        * font/plane00csur:
+	* font/plane00/nonprinting.hex: removed U+FFFE and U+FFFF to
+	  appease MS Windows XP (see font/plane00/omit.hex entry below).
+	* font/plane00/omit.hex: consists of U+FFFE and U+FFFF, for the
+	  sake of MS Windows XP.
+	* font/plane00/unifont-base.hex: Further tweaks to APL glyphs.
+	* font/plane00csur:
 	  - Created ConScript Unicode Registry directory, for glyphs in Michael
 	    Everson's PUA mapping ("http://www.evertype.com/standards/csur/").
-          - Added contributions of Wojciech Stryjewski: Tengwar and Klingon.
-          - Added contributions of Andrew Miller: Kinya (partial), aUI,
+	  - Added contributions of Wojciech Stryjewski: Tengwar and Klingon.
+	  - Added contributions of Andrew Miller: Kinya (partial), aUI,
 	    Gargoyle, Ewellic, Unifon, Solresol, Visible Speech, and Monofon.
 	  - Added contributions of Paul Hardy: Cirth and Aiha.
 	* font/plane01: created directory for Unicode Plane 1 glyphs.
@@ -1855,7 +2056,7 @@
 	  Variation Selectors Supplement.
 	* font/plane0Fcsur: added glyphs from Michael Everson's ConScript
 	  Unicode Registry (CSUR) contriubted by Andrew Miller: Kinya Syllables.
-        * font/psf: added directory with files to build new PSF font version,
+	* font/psf: added directory with files to build new PSF font version,
 	  to allow APL use under GNU/Linux in console mode.
 	* font/ttfsrc: simplified directory to only contain a Makefile;
 	  other files were moved to "font/plane00/" as a precursor to allow
@@ -1872,7 +2073,7 @@
 	* src/unibmp2hex.c: added forced double width for appropriate
 	  Plane 1 (Supplemental Multilingual Plane) scripts now that
 	  this package extends beyond the Basic Multilingual Plane.
-        * src/unipagecount.c: corrected license from GPL3+ to GPL2+.
+	* src/unipagecount.c: corrected license from GPL3+ to GPL2+.
 
 2013-12-21  Paul Hardy  <unifoundry@unifoundry.com>
 
@@ -1955,8 +2156,8 @@
 	* font/*/unifont-*.bmp: Create chart of entire Unifont using pre-built
 	  unifont_sample.hex rather than assembling *.hex just for this image.
 	* hangul/hangul-generation.html: updated to correct a typo, where
-          rieul was mentioned as an initial consonant instead of a final
-          consonant in an explanation of vertical spacing constraints.
+	  rieul was mentioned as an initial consonant instead of a final
+	  consonant in an explanation of vertical spacing constraints.
 	* hangul/Makefile:
 	  - Updated hex2bdf parameters to name generated BDF font
 	    "Unifont Johab" rather than "unifont" and add copyright.
