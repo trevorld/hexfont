@@ -14,7 +14,7 @@
 
 ## <a name="overview">Overview</a>
 
-This is an R data package that includes every "hex" font file from the [GNU Unifont](http://unifoundry.com/unifont/index.html) project compressed by `xz`.  It includes a convenience function that loads several of them as a [{bittermelon}](https://github.com/trevorld/bittermelon) `bm_font()` object.  GNU Unifont is a monoscale bitmap font (8x16 and 16x16 glyphs) that pretty much covers all of the official Unicode glyphs plus several of the artificial scripts in the [(Under-)ConScript Unicode Registry](http://www.kreativekorp.com/ucsur/).
+This is an R data package that includes every "hex" font file from the [GNU Unifont](http://unifoundry.com/unifont/index.html) project compressed by `xz`.  It includes a convenience function that loads several of them as a [{bittermelon}](https://github.com/trevorld/bittermelon) `bm_font()` object.  GNU Unifont is a duospaced bitmap font (8x16 and 16x16 glyphs) that pretty much covers all of the official Unicode glyphs plus several of the artificial scripts in the [(Under-)ConScript Unicode Registry](http://www.kreativekorp.com/ucsur/).
 
 ## <a name="hex">Included hex font files</a>
 

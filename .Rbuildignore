@@ -1,5 +1,6 @@
 ^pkgdown$
 ^_pkgdown.yml$
+^cran-comments.md$
 ^Rakefile$
 ^raw-data$
 ^LICENSE.md$
