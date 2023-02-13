@@ -1,16 +1,16 @@
 Package: hexfont
 Type: Package
-Title: Unifont Hex Fonts
-Version: 0.3.0
+Title: 'GNU Unifont' Hex Fonts
+Version: 0.3.1
 Authors@R: c(person("Trevor L", "Davis", role=c("aut", "cre"),
              email="trevor.l.davis@gmail.com",
              comment = c(ORCID = "0000-0001-6341-4639")),
              person("GNU Unifont authors", role = "cph"))
-Description: Contains all the hex font files from the 'GNU Unifont Project' <https://unifoundry.com/unifont/> compressed by 'xz'.  'GNU Unifont' is a duospaced bitmap font that attempts to cover all the official Unicode glyphs plus several of the artificial scripts in the '(Under-)ConScript Unicode Registry' <http://www.kreativekorp.com/ucsur/>.  Provides a convenience function for loading in several of them at the same time as a 'bittermelon' bitmap font object for easy rendering of the glyphs in an R terminal or graphics device.
+Description: Contains all the hex font files from the 'GNU Unifont Project' <https://unifoundry.com/unifont/> compressed by 'xz'.  'GNU Unifont' is a duospaced bitmap font that attempts to cover all the official Unicode glyphs plus several of the artificial scripts in the '(Under-)ConScript Unicode Registry' <http://www.kreativekorp.com/ucsur/>.  Provides a convenience function for loading in several of them at the same time as a 'bittermelon' bitmap font object for easy rendering of the glyphs in an 'R' terminal or graphics device.
 URL: https://github.com/trevorld/hexfont
 BugReports: https://github.com/trevorld/hexfont/issues
 License: GPL (>= 2)
-Imports: bittermelon (>= 0.1.0-35), utils
+Imports: bittermelon (>= 1.1.0), utils
 Suggests: knitr, oblicubes, rmarkdown, testthat, Unicode
 VignetteBuilder: knitr, rmarkdown
 Encoding: UTF-8

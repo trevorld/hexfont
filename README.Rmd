@@ -37,6 +37,7 @@ The main function `unifont()` loads in several GNU Unifont hex files at the same
 | jp | Use Japanese version of Chinese characters | `FALSE` | 
 | csur | Include (Under-)Conscript Unicode Registry glyphs | `TRUE` |
 | sample | Add circle to "Combining" characters | `FALSE` | 
+| ucp | Character vector of Unicode Code Points to only load | `NULL` |
 
 ```{r unifont, output.class = "bitmap"}
 library("bittermelon") # remotes::install_github("trevorld/bittermelon")
@@ -45,8 +46,16 @@ system.time(font <- unifont()) # Unifont is a **big** font
 length(font) |> prettyNum(big.mark = ",") # number of glyphs
 object.size(font) |> format(units = "MB") # memory used
 
+# Faster to load from a cache
+saveRDS(font, "unifont.rds")
+system.time(font <- readRDS("unifont.rds"))
+
+# Or just load the subset of GNU Unifont you need
+s <- "Ｒ很棒！"
+system.time(font_s <- unifont(ucp = str2ucp(s)))
+
 # Mandarin Chinese
-as_bm_bitmap("Ｒ很棒！", font = font) |>
+as_bm_bitmap(s, font = font_s) |>
     bm_compress("v")
 
 # Emoji

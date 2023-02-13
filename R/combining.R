@@ -1,4 +1,4 @@
-#' Get combining character information
+#' Get combining character code points
 #'
 #' `unifont_combining()` returns a character vector of the code points
 #' for all the "combining" characters in Unifont.
@@ -14,23 +14,20 @@
 #' @seealso  Can be used with the `pua_combining` argument of [bittermelon::bm_compose()]
 #'           and [bittermelon::as_bm_bitmap()].
 #' @examples
-#'   df <- unifont_combining()
-#'   utils::head(df)
+#' uc <- unifont_combining()
+#' print(uc)
 #'
-#' \dontrun{ # Unifont is a **big** font, will take more than 10 seconds
-#'   if (require("bittermelon")) {
-#'     system.time(font <- unifont())
-#'
-#'     # Tengwar with combining glyphs
-#'     bml <- as_bm_list("\ue004\ue014\ue04a\ue005\ue000\ue040\ue022\ue04a\ue003\ue04e",
-#'                       font = font)
-#'     to_raise <- which(names(bml) %in% c("U+E04A", "U+E04E"))
-#'     bml[to_raise] <- bm_shift(bml[to_raise], top = 1L)
-#'     bml <- bm_compose(bml, pua_combining = unifont_combining())
-#'     bml <- bm_pad(bml, type = "trim", left = 1L, right = 0L)
-#'     bm <- bm_call(bml, cbind)
-#'     print(bm, px = px_ascii)
-#'   }
+#' # Tengwar with combining glyphs
+#' if (require("bittermelon")) {
+#'   s <- "\ue004\ue014\ue04a\ue005\ue000\ue040\ue022\ue04a\ue003\ue04e"
+#'   font <- unifont(ucp = str2ucp(s))
+#'   bml <- as_bm_list(s, font = font)
+#'   to_raise <- which(names(bml) %in% c("U+E04A", "U+E04E"))
+#'   bml[to_raise] <- bm_shift(bml[to_raise], top = 1L)
+#'   bml <- bm_compose(bml, pua_combining = uc)
+#'   bml <- bm_pad(bml, type = "trim", left = 1L, right = 0L)
+#'   bm <- bm_call(bml, cbind)
+#'   print(bm, px = px_ascii)
 #' }
 #' @export
 unifont_combining <- function(upper = TRUE, csur = TRUE, unicode = FALSE) {

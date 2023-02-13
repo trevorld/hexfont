@@ -1,3 +1,8 @@
+Changes as requested by Benjamin Altmann:
+
+* 'GNU Unifont' in DESCRIPTION Title is now enclosed in single quotes
+* Have removed `\dontrun` from examples
+
 ## Test environments
 
 * local (linux, R 4.2.2)
@@ -13,8 +18,6 @@
 * 1 NOTE: 
 
   + New submission
-  + Possibly misspelled words in DESCRIPTION: Unifont, glyphs, duospaced
+  + Possibly misspelled words in DESCRIPTION: glyphs, duospaced
 
     - duospaced and glyphs are not misspelled
-    - In the Title there is a Unifont (not misspelled)
-    

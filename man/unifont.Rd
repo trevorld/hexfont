@@ -4,7 +4,7 @@
 \alias{unifont}
 \title{Load Unifont font}
 \usage{
-unifont(upper = TRUE, jp = FALSE, csur = TRUE, sample = FALSE)
+unifont(upper = TRUE, jp = FALSE, csur = TRUE, sample = FALSE, ucp = NULL)
 }
 \arguments{
 \item{upper}{Include glyphs above the Unicode Basic Multilingual plane.}
@@ -14,6 +14,9 @@ unifont(upper = TRUE, jp = FALSE, csur = TRUE, sample = FALSE)
 \item{csur}{Include (Under-)Conscript Unicode Registry glyphs.}
 
 \item{sample}{Add circle to "Combining" characters.}
+
+\item{ucp}{Character vector of Unicode Code Points: glyphs not in this vector won't be read in.
+If \code{NULL} (default) read every glyph in the font.}
 }
 \value{
 A \code{\link[bittermelon:bm_font]{bittermelon::bm_font()}} object.
@@ -23,19 +26,20 @@ The function \code{unifont()} loads in several GNU Unifont hex files as a
 single \code{\link[bittermelon:bm_font]{bittermelon::bm_font()}} object.
 }
 \examples{
-\dontrun{ # Unifont is a **big** font, will take more than 10 seconds
-  if (require("bittermelon")) {
-    system.time(font <- unifont())
-    length(font)
-    object.size(font)
+# Much faster to load only the subset of GNU Unifont one needs
+# Mandarin Chinese
+if (require("bittermelon")) {
+  s <- "\uff32\u5f88\u68d2\uff01"
+  font <- unifont(ucp = str2ucp(s))
+  bm <- as_bm_bitmap(s, font = font)
+  print(bm, px = px_ascii)
+}
 
-    # Mandarin Chinese
-    bml <- as_bm_bitmap("\uff32\u5f88\u68d2\uff01", font = font)
-    print(bm, px = px_ascii)
-
-    # Emoji
-    bml <- as_bm_bitmap("\U0001f42d\U0001f432\U0001f435", font = font)
-    print(bm, px = px_ascii)
-  }
+# Emoji
+if (require("bittermelon")) {
+  s <- "\U0001f42d\U0001f432\U0001f435"
+  font <- unifont(ucp = str2ucp(s))
+  bm <- as_bm_bitmap(s, font = font)
+  print(bm, px = px_ascii)
 }
 }

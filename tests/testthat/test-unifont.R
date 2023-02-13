@@ -1,19 +1,20 @@
 test_that("unifont() works", {
 
-    font <- unifont()
-    expect_length(font, 79162L)
-
     skip_on_os("windows")
 
     # Mandarin Chinese
     verify_output("txt/mandarin.txt", {
-        bml <- as_bm_list("Ｒ很棒！", font = font)
-        print(bm_call(bml, cbind))
+        s <- "\uff32\u5f88\u68d2\uff01"
+        font <- unifont(ucp = str2ucp(s))
+        bm <- as_bm_bitmap(s, font = font)
+        print(bm)
     })
 
     # Emoji
     verify_output("txt/emoji.txt", {
-        bml <- as_bm_list("🐭🐲🐵", font = font)
-        print(bm_call(bml, cbind))
+        s <- "\U0001f42d\U0001f432\U0001f435"
+        font <- unifont(ucp = str2ucp(s))
+        bm <- as_bm_bitmap(s, font = font)
+        print(bm)
     })
 })

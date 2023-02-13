@@ -75,6 +75,7 @@ The main function `unifont()` loads in several GNU Unifont hex files at the same
 | jp | Use Japanese version of Chinese characters | `FALSE` | 
 | csur | Include (Under-)Conscript Unicode Registry glyphs | `TRUE` |
 | sample | Add circle to "Combining" characters | `FALSE` | 
+| ucp | Character vector of Unicode Code Points to only load | `NULL` |
 
 
 ```r
@@ -99,7 +100,7 @@ system.time(font <- unifont()) # Unifont is a **big** font
 
 ```
 ##    user  system elapsed 
-##  59.911   0.131  60.051
+##  52.149   0.148  52.324
 ```
 
 ```r
@@ -119,8 +120,30 @@ object.size(font) |> format(units = "MB") # memory used
 ```
 
 ```r
+# Faster to load from a cache
+saveRDS(font, "unifont.rds")
+system.time(font <- readRDS("unifont.rds"))
+```
+
+```
+##    user  system elapsed 
+##   0.411   0.000   0.411
+```
+
+```r
+# Or just load the subset of GNU Unifont you need
+s <- "Ｒ很棒！"
+system.time(font_s <- unifont(ucp = str2ucp(s)))
+```
+
+```
+##    user  system elapsed 
+##   0.662   0.000   0.662
+```
+
+```r
 # Mandarin Chinese
-as_bm_bitmap("Ｒ很棒！", font = font) |>
+as_bm_bitmap(s, font = font_s) |>
     bm_compress("v")
 ```
 
