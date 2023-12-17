@@ -2,7 +2,7 @@
 % Please edit documentation in R/unifont.R
 \name{unifont}
 \alias{unifont}
-\title{Load Unifont font}
+\title{Load GNU Unifont font}
 \usage{
 unifont(upper = TRUE, jp = FALSE, csur = TRUE, sample = FALSE, ucp = NULL)
 }

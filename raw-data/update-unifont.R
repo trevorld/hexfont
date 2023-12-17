@@ -1,12 +1,12 @@
-src_dir <- "raw-data/src/unifont-15.0.01"
+src_dir <- "raw-data/src/unifont-15.1.04"
 tar_dir <- "inst/font"
 
 for (doc in c("ChangeLog", "OFL-1.1.txt", "COPYING", "README"))
     file.copy(file.path(src_dir, doc), file.path(tar_dir, doc), overwrite = TRUE)
 
 plane_files <- list.files(src_dir, pattern = "plane", recursive = TRUE)
-plane_files <- plane_files[-grep("plane02-jp.html", plane_files)]
-plane_files <- plane_files[-grep("bmp", plane_files)]
+plane_files <- plane_files[-grep(".html$", plane_files)]
+plane_files <- plane_files[-grep(".bmp$", plane_files)]
 
 for (f in plane_files) {
     f_src <- file.path(src_dir, f)

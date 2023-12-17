@@ -1,3 +1,11 @@
+hexfont 0.4.0
+=============
+
+* We update the hex font files to match [GNU Unifont](http://unifoundry.com/unifont/index.html) v15.1.04 (previously matched v15.0.01).
+* `unifont_version()` returns the GNU Unifont version number this package packed their `hex` files from (#6).
+* Bumps minimum version number of `{bittermelon}` so the examples/tests continue to work after a breaking change 
+  in `Unicode::u_char_property()`'s behavior introduced in `{Unicode}` v15.1.0-1 (#7).
+
 hexfont 0.3.1
 =============
 

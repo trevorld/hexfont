@@ -14,13 +14,13 @@
 
 ## <a name="overview">Overview</a>
 
-This is an R data package that includes every "hex" font file from the [GNU Unifont](http://unifoundry.com/unifont/index.html) project compressed by `xz`.  It includes a convenience function that loads several of them as a [{bittermelon}](https://github.com/trevorld/bittermelon) `bm_font()` object.  GNU Unifont is a duospaced bitmap font (8x16 and 16x16 glyphs) that pretty much covers all of the official Unicode glyphs plus several of the artificial scripts in the [(Under-)ConScript Unicode Registry](http://www.kreativekorp.com/ucsur/).
+This is an R data package that includes most "hex" font files from the [GNU Unifont](http://unifoundry.com/unifont/index.html) project compressed by `xz`.  It includes a convenience function that loads several of them as a [{bittermelon}](https://github.com/trevorld/bittermelon) `bm_font()` object.  GNU Unifont is a duospaced bitmap font (8x16 and 16x16 glyphs) that pretty much covers all of the official Unicode glyphs plus several of the artificial scripts in the [(Under-)ConScript Unicode Registry](http://www.kreativekorp.com/ucsur/).
 
 ## <a name="hex">Included hex font files</a>
 
-`{hexfont}` includes all the hex font files included in the [GNU Unifont](http://unifoundry.com/unifont/index.html)
+`{hexfont}` includes most of the hex font files included in the [GNU Unifont](http://unifoundry.com/unifont/index.html)
 source code distribution.  The version number is stripped from the file names in the `precompiled` directory and
-the hex fonts are all compressed by `xz` but other than that the hex fonts are otherwise unchanged.
+the hex fonts are all compressed by `xz` but other than that the hex fonts are otherwise unchanged.  Due to CRAN size limitations we omit the "precompiled" `unifont_all` hex file (this is presumably the concatenation of the "precompiled" `unifont` and `unifont_upper` hex files).
 
 
 ```r
@@ -30,39 +30,47 @@ list.files(hex_dir, pattern = ".hex.xz", recursive = TRUE)
 
 ```
 ##  [1] "plane00/alt/codepage-437.hex.xz"           
-##  [2] "plane00/alt/mongolian-vertical.hex.xz"     
-##  [3] "plane00/alt/phags-pa-vertical.hex.xz"      
-##  [4] "plane00/alt/quad-width.hex.xz"             
-##  [5] "plane00/alt/reiwa-vertical.hex.xz"         
-##  [6] "plane00/alt/uni0009-orig.hex.xz"           
-##  [7] "plane00/copyleft.hex.xz"                   
-##  [8] "plane00/custom00.hex.xz"                   
-##  [9] "plane00/hangul-syllables.hex.xz"           
-## [10] "plane00/izmg16-plane00.hex.xz"             
-## [11] "plane00/omit.hex.xz"                       
-## [12] "plane00/plane00-nonprinting.hex.xz"        
-## [13] "plane00/plane00-unassigned.hex.xz"         
-## [14] "plane00/pua.hex.xz"                        
-## [15] "plane00/spaces.hex.xz"                     
-## [16] "plane00/unifont-base.hex.xz"               
-## [17] "plane00/wqy.hex.xz"                        
-## [18] "plane00csur/plane00csur-nonprinting.hex.xz"
-## [19] "plane00csur/plane00csur-spaces.hex.xz"     
-## [20] "plane00csur/plane00csur.hex.xz"            
-## [21] "plane01/plane01-nonprinting.hex.xz"        
-## [22] "plane01/plane01.hex.xz"                    
-## [23] "plane01/space.hex.xz"                      
-## [24] "plane02/izmg16-plane02.hex.xz"             
-## [25] "plane0E/plane0E-nonprinting.hex.xz"        
-## [26] "plane0E/plane0E.hex.xz"                    
-## [27] "plane0Fcsur/plane0Fcsur-nonprinting.hex.xz"
-## [28] "plane0Fcsur/plane0Fcsur.hex.xz"            
-## [29] "precompiled/unifont_jp_sample.hex.xz"      
-## [30] "precompiled/unifont_jp.hex.xz"             
-## [31] "precompiled/unifont_sample.hex.xz"         
-## [32] "precompiled/unifont_upper_sample.hex.xz"   
-## [33] "precompiled/unifont_upper.hex.xz"          
-## [34] "precompiled/unifont.hex.xz"
+##  [2] "plane00/alt/izmg16-plane00-FFxx.hex.xz"    
+##  [3] "plane00/alt/mongolian-vertical.hex.xz"     
+##  [4] "plane00/alt/phags-pa-vertical.hex.xz"      
+##  [5] "plane00/alt/quad-width.hex.xz"             
+##  [6] "plane00/alt/reiwa-vertical.hex.xz"         
+##  [7] "plane00/alt/uni0009-orig.hex.xz"           
+##  [8] "plane00/copyleft.hex.xz"                   
+##  [9] "plane00/custom00.hex.xz"                   
+## [10] "plane00/hangul-syllables.hex.xz"           
+## [11] "plane00/izmg16-plane00.hex.xz"             
+## [12] "plane00/omit.hex.xz"                       
+## [13] "plane00/plane00-nonprinting.hex.xz"        
+## [14] "plane00/plane00-unassigned.hex.xz"         
+## [15] "plane00/pua.hex.xz"                        
+## [16] "plane00/spaces.hex.xz"                     
+## [17] "plane00/unifont-base.hex.xz"               
+## [18] "plane00/wqy.hex.xz"                        
+## [19] "plane00csur/plane00csur-nonprinting.hex.xz"
+## [20] "plane00csur/plane00csur-spaces.hex.xz"     
+## [21] "plane00csur/plane00csur-unassigned.hex.xz" 
+## [22] "plane00csur/plane00csur.hex.xz"            
+## [23] "plane01/plane01-nonprinting.hex.xz"        
+## [24] "plane01/plane01-noscript.hex.xz"           
+## [25] "plane01/plane01-space.hex.xz"              
+## [26] "plane01/plane01-unassigned.hex.xz"         
+## [27] "plane01/plane01.hex.xz"                    
+## [28] "plane01/space.hex.xz"                      
+## [29] "plane02/izmg16-plane02.hex.xz"             
+## [30] "plane02/zh-plane02.hex.xz"                 
+## [31] "plane03/zh-plane03.hex.xz"                 
+## [32] "plane0E/plane0E-nonprinting.hex.xz"        
+## [33] "plane0E/plane0E-unassigned.hex.xz"         
+## [34] "plane0E/plane0E.hex.xz"                    
+## [35] "plane0Fcsur/plane0Fcsur-nonprinting.hex.xz"
+## [36] "plane0Fcsur/plane0Fcsur.hex.xz"            
+## [37] "precompiled/unifont_jp_sample.hex.xz"      
+## [38] "precompiled/unifont_jp.hex.xz"             
+## [39] "precompiled/unifont_sample.hex.xz"         
+## [40] "precompiled/unifont_upper_sample.hex.xz"   
+## [41] "precompiled/unifont_upper.hex.xz"          
+## [42] "precompiled/unifont.hex.xz"
 ```
 
 ## <a name="examples">Examples</a>
@@ -100,7 +108,7 @@ system.time(font <- unifont()) # Unifont is a **big** font
 
 ```
 ##    user  system elapsed 
-##  52.149   0.148  52.324
+##  96.170   0.103  96.292
 ```
 
 ```r
@@ -108,7 +116,7 @@ length(font) |> prettyNum(big.mark = ",") # number of glyphs
 ```
 
 ```
-## [1] "79,162"
+## [1] "123,234"
 ```
 
 ```r
@@ -116,7 +124,7 @@ object.size(font) |> format(units = "MB") # memory used
 ```
 
 ```
-## [1] "118.4 Mb"
+## [1] "189 Mb"
 ```
 
 ```r
@@ -127,7 +135,7 @@ system.time(font <- readRDS("unifont.rds"))
 
 ```
 ##    user  system elapsed 
-##   0.411   0.000   0.411
+##    0.65    0.00    0.65
 ```
 
 ```r
@@ -138,7 +146,7 @@ system.time(font_s <- unifont(ucp = str2ucp(s)))
 
 ```
 ##    user  system elapsed 
-##   0.662   0.000   0.662
+##   0.606   0.004   0.610
 ```
 
 ```r
@@ -149,12 +157,12 @@ as_bm_bitmap(s, font = font_s) |>
 
 ```
 ##                     █ ▄▄▄▄▄▄▄      █      █                     
-##                   ▄▀  █     █      █  ▀▀▀▀█▀▀▀▀                 
-##   ██▀▀▀▀▀▀▀▀▄▄   ▀  █ █▀▀▀▀▀█   ▀▀▀█▀▀ ▀▀█▀▀▀▀         ██       
-##   ██        ██    ▄█  █▄▄▄▄▄█     ██▄ ▀▀█▀▀▀█▀▀        ██       
-##   ██▀▀▀▀██▀▀    ▄▀ █  █  █  ▄▀   █ █ ▀▄▀  █  ▀▄        ██       
-##   ██      ██       █  █   █▀    ▀  █    ▀▀█▀▀          ▀▀       
-##   ██        ██     █  █ ▄  ▀▄      █  ▀▀▀▀█▀▀▀▀        ██       
+##    ▄▄▄▄▄▄▄        ▄▀  █     █      █  ▀▀▀▀█▀▀▀▀      ▄█▄        
+##     █     ▀▄     ▀  █ █▀▀▀▀▀█   ▀▀▀█▀▀ ▀▀█▀▀▀▀       ███        
+##     █     ▄▀      ▄█  █▄▄▄▄▄█     ██▄ ▀▀█▀▀▀█▀▀      ▀█▀        
+##     █▀▀▀█▀      ▄▀ █  █  █  ▄▀   █ █ ▀▄▀  █  ▀▄       █         
+##     █    ▀▄        █  █   █▀    ▀  █    ▀▀█▀▀                   
+##    ▄█▄    ▄█▄      █  █ ▄  ▀▄      █  ▀▀▀▀█▀▀▀▀       █         
 ##                    █  █▀     ▀▀    █      █
 ```
 
@@ -221,8 +229,8 @@ bml |> bm_compose(pua_combining = unifont_combining()) |>
 The overall license for this package is GPL (>=2) but the bundled hex font files 
 are also available under more permissive terms.  Excerpt from `font/COPYING` 
 
-> License for font/plane00/jiskan16-plane00.hex and
-> font/plane02/jiskan16-plane02.hex:
+> License for `font/plane00/jiskan16-plane00.hex` and
+> `font/plane02/jiskan16-plane02.hex`:
 > 
 >      These two files are in the Public Domain.  They were created
 >      from Public Domain BDF font files jiskan16-2004-1.bdf and

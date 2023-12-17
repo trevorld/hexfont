@@ -1,3 +1,369 @@
+2023-10-29  Paul Hardy <unifoundry@gmail.com>
+	* Version 15.1.04
+	* Makefile: ignore error in Doxygen building.
+	* doxygen/new_header.tex: change to run LaTeX in non-stop mode.
+	* font/Makefile: Modified construction of unifont_upper and
+	  unifont_upper to have larger supersets of Plane 2 and Plane 3
+	  glyphs.
+	* font/plane00/unifont-base.hex:
+	  Johnnie Weaver updated U+266D, U+266E, U+266F, and U+26BC.
+	* src/Makefile: added flags for compilation of unihexpose.
+
+2023-10-21  Paul Hardy <unifoundry@gmail.com>
+	* Version 15.1.03
+	* Doxyfile: set LATEX_HEADER to newly-made doxygen/new_header.tex.
+	* doxygen directory:
+	  - Used doxygen to generate default versions of new_footer.tex,
+	    new_header.tex, and new_stylesheet.sty.
+	  - Modified new_header.tex to undefine \+ command to avoid
+	    tabbing error bug.
+	* font/Makefile:
+	  - Updates to building .hex output files so CJK Unified Ideographs
+            Extension I glyphs and others would appear in the Japenese
+	    variation as well as the Chinese (default) variation, and
+	    removal of duplicate U+0020 space glyphs in some output .hex files.
+	* font/plane00/wqy.hex:
+	  - 湖 远星 contributed updates for U+5C81 and U+6708.
+	* font/plane02/zh-plane02.hex:
+	  - 湖 远星 contributed 14 glyph updates to CJK  Unified Ideographs
+	    Extension B and Extension C: U+2A6D7..U+2A6DF and
+	    U+2B735..U+2B739.
+	  - Boris Zhang and Yzy32767 contributed CJK Unified Ideographs
+	    Extension I glyphs (U+2EBF0..U+2EE5D).
+	* src: Full prototype and typecasting definitions in main functions
+	  in unicoverage.c, unifontpic.c, unihex2bmp.c, and unipagecount.c.
+
+2023-09-21  Paul Hardy <unifoundry@gmail.com>
+	* Version 15.1.02.
+	* font/Makefile: commented out duplicate $(HANGUL) target.
+	* font/plane00/wqy.hex: 湖 远星 updated glyphs for U+3B9D,
+	  U+49C8, U+4C41, U+4DB8, U+4DBA, U+4DBB, U+4DBC, U+4DBD,
+	  U+4DBE, U+4DBF, U+517B, U+54C8, U+5A92, U+5C16, U+5F3A,
+	  U+5F73, U+5FD7, U+636E, U+64C5, U+6B89, U+6E05, U+7070,
+	  U+7EA6, U+809E, U+891D, U+8D4C, U+8F9E, U+9001, U+9EC4,
+	  U+9FD0, U+9FEC, U+9FED, U+9FEE, U+9FF0, U+9FF2, U+9FF3,
+	  U+9FF4, U+9FF5, U+9FF6, U+9FF7, U+9FF8, U+9FF9, U+9FFB,
+	  U+9FFC, U+9FFD, and U+9FFE.
+	* font/plane03/zh-plane03.hex: 湖 远星 contributed glyphs
+	  U+30000..U+3017F.
+	* man/Makefile: added new man pages to MAN1PAGES & MAN5PAGES
+	  definitions.
+
+2023-09-12  Paul Hardy <unifoundry@unifoundry.com>
+	* Version 15.1.01.
+	* All Makefile files: changed "\rm" to "rm" for Cygwin.
+	* ChangeLog: Fixed numerous typos.
+	* Doxyfile: Changed CREATE_SUBDIRS to "NO", because setting
+	  "CREATE_SUBDIRS_LEVEL = 0" still created more than 16 subdirectories.
+	* Makefile:
+	  - Added more comments.
+	  - Changed "tar cf" to "tar chf" for Cygwin.
+	* README: Added description of using Hangul johab 6/3/1
+	  glyphs as the Unicode Plane 0 PUA glyphs.
+	* doc/hexdraw.texi: updated to cover --height option.
+	* doc/unifont.texi:
+	  - Included the new graphic image he-zhixiang.png to display
+	    the name 何志翔 (He Zhixiang).
+	  - Mentioned "row" being the Unicode term equivalent to the
+	    Unifont term "page".
+	* font/Makefile:
+	  - No longer build or install TrueType font files in the
+	    default build; OpenType font files have taken their place.
+	    TrueType files must now be built manually by invoking the
+	    command "make truetype" in the "font" directory.
+	  - Modified to support independent invocation of commands
+	    "make truetype", "make opentype", "make pcf", and "make bdf",
+	    including creation of $(BINDIR) with compiled programs if
+	    if doesn't exist, so the above "make" commands can be
+	    given directly in the "font" directory as the only "make"
+	    operation if desired.
+	  - Fixed plane00.html and plane01.html creation so they are no
+	    longer empty.
+	  - Added Ho-Seok Ee (hoseok.ee@gmail.com), creator of the new
+	    modern Hangul Syllables glyphs with new johab 6/3/1 encoding,
+	    to the COPYRIGHT string.
+	* font/otfsrc/Makefile:
+	  - Added Ho-Seok Ee, creator of the new modern Hangul Syllables
+	    glyphs with new johab 6/3/1 encoding, to the COPYRIGHT string.
+	* font/plane00/alt/old-wqy.hex: removed file after review.
+	* font/plane00/hangul:
+	  - Moved original hangul directory to font/plane00/hangul-johab1044.
+	  - Created new hangul directory with new Johab 6/3/1 encoding scheme.
+	  - Start "hangul-base.hex" code points at 0xE000 so that file
+	    can be used in the Unicode Plane 0 Private Use Area if desired.
+	* font/plane00/izmg16-plane00.hex: removed U+FFxx.
+	* font/plane00/plane00-unassigned.hex: removed U+2FFC..U+2FFF,
+	  U+31EF.
+	* font/plane00/unifont-base.hex:
+	  - Johnnie Weaver modified U+0132 and U+0133 ("IJ" ligatures).
+	  - Johnnie Weaver modified U+1E9E (LATIN CAPITAL LETTER SHARP S).
+	  - Modified U+2CC2 COPTIC CAPITAL LETTER CROSSED SHEI and
+	    U+2CC3 COPTIC SMALL LETTER CROSSED SHEI for consistency
+	    with the redrawn U+03E2 COPTIC CAPITAL LETTER SHEI and
+	    U+03E3 COPTIC SMALL LETTER SHEI.  Thanks to David Corbett
+	    for noticing that.
+	  - Redrew Ideographic Description Characters (U+2FF0..U+2FFB)
+	    for consistency and added new glyphs (U+2FFC..U+2FFF).
+	  - Added CJK Strokes glyph U+31EF.
+	  - Modified Latin glyphs U+A798 (LATIN CAPITAL LETTER F WITH STROKE)
+	    and U+AB5A (LATIN SMALL LETTER Y WITH SHORT RIGHT LEG) per
+	    Unicode 15.1.0 changes.
+	  - Modified star glyphs U+2605, U+2606, and U+2BE8 for consistency.
+	    [Savannah bug #64598]
+	* font/plane00/wqy.hex:
+	  - Made modifications to Korean ideographs in CJK Unified Ideographs
+	    Extension A (U+3400..U+4DBF) per Unicode 15.1.0 changes.
+	  - Modified CJK Unified Ideographs Extension A U+3B9D, U+454E,
+	    U+49C8 (from 湖 远星) and U+56B8.
+	  - Modified CJK Unified Ideographs Extension U+809E and U+891D.
+	* font/plane00csur: Added three hexadecimal notation scripts.
+	  - U+EBE0..U+EBEF: Added Boby Lapointe's "bibi-binary" notation.
+	  - U+EBF0..U+EBFF: for Bruce Alan Martin's bit location notation.
+	  - U+ECF0..U+ECFF: for Ronald O. Whitaker's triangular notation.
+	* font/plane01/plane01.hex:
+	  - Added missing pixel in U+11240 (KHOJKI LETTER SHORT I).
+	  - Moved U+11AC7 down one row.
+	  - Modified Alchemical Symbols (U+1F700..U+1F77F) per Unicode
+	    15.1.0 changes.
+	  - Johnnie Weaver modified Lycian glyphs at U+1028E, U+1028F,
+	    U+10298, and U+1029A from double-width to single-width.
+	    He also modified Carian glyphs at U+102B0 and 102B7 from
+	    double-width to single-width.  Now all glyphs in those two
+	    scripts are single-width.
+	* font/ttfsrc/Makefile:
+	  - Added Ho-Seok Ee, creator of the new modern Hangul Syllables
+	    glyphs with new johab 6/3/1 encoding, to the COPYRIGHT string.
+	* man: Added man pages for the new Hangul johab 6/3/1 encoding
+	  and supporting programs: unifont-johab631.5, johab2syllables.1,
+	  unigen-hangul.1, and unijohab2html.1.
+	* man/hex2otf.1: added additional explanation of "gsub" format
+	  option improving HarfBuzz rendering of Unifont.
+	* man/hexdraw.1: updated to cover --height option.
+	* src:
+	  - Makefile: added C99 definition for ease of overriding on
+	    the command line make invocation, if desired, when compiling
+	    hex2otf.
+	  - hexdraw: updated to support --height option for glyphs uo to
+	    128 columns wide by 64 rows high.
+	  - Added files for new Hangul johab 6/3/1 support: hangul.h,
+	    unihangul-support.c, johab2syllables.c, unigen-hangul.c,
+	    and unijohab2html.c.
+	  - Added new program unihexpose, which coverts Unifont glyphs
+	    into transposed sets of 8 rows per byte per column, to simplify
+	    output on graphics displays with controller chips that can
+	    autoincrement across the display one column of 8 pixels at
+	    a time.  This uses functions in the new file unifont-support.c;
+	    currently no other programs use unifont-support.c, to avoid
+	    introducing bugs into existing programs during a major Unicode
+	    release.
+
+2023-06-04  Paul Hardy <unifoundry@unifoundry.com>
+	* Version 15.0.06.
+	* font/plane00/hangul/hanbase-*.bmp: Minseo Lee made adjustments
+	  to some component glyphs used to generate the Hangul Syllables
+	  (U+AC00..U+D7A3) range.
+	* font/plane00/unifont-base.hex: Minseo Lee contributed Hangul glyphs
+	  in the ranges U+3131..U+318E, U+3200..U+321E, and U+3260..U+327F
+	  for consistency with the new Hangul Syllables glyphs.
+
+2023-06-03  Paul Hardy <unifoundry@unifoundry.com>
+	* Version 15.0.05.
+	* Doxyfile:
+	  - Corrected MATHJAX_VERSION to "MathJax_2", although MathJax
+	    is not invoked.
+	  - Left PROJECT_NUMBER at "15.0.04" because C source programs
+	    did not change.
+	* font/Makefile:
+	  - Changed copyright string to extend to 2023 and added Minseo Lee.
+	  - Added new directory plane00/hangul to list of directories for
+	    performing "make clean" and "make distclean".
+	* font/plane00/alt/hangul: Added directory for building the
+	  old Hangul Syllables block, with the old version of johab2ucs2.
+	* font/plane00/wqy-orig.hex: Created file to hold replaced Wen
+	  Quan Yi glyphs.
+	* font/plane00/hangul: Added directory with sample Makefile for
+	  building Hangul syllables from scratch, using three .bmp images
+	  as initial input.
+	* font/plane00/hangul-syllables.hex: New Hangul Syllables block
+	  contributed by Minseo Lee.  The old hangul-syllables.hex file
+	  has been removed and replace with the much smaller hangul-base.hex
+	  file in font/plane00/alt directory, from which it can be recreated
+	  (see font/plane00/hangul/README for more information).
+	* font/plane00/wqy.hex: Modified U+5829 and U+6FF9.
+	* font/otfsrc/Makefile:
+	  - Changed copyright string to extend to 2023 and added Minseo Lee.
+	* font/ttfsrc/Makefile:
+	  - Changed copyright string to extend to 2023 and added Minseo Lee.
+	* src/johab2ucs2:
+	  - Minseo Lee changed some letter mapping combinations.
+	  - Paul Hardy changed test conditions for ..."or die" statement.
+
+2023-05-28  Paul Hardy <unifoundry@unifoundry.com>
+	* Version 15.0.04.
+	* Doxygen LaTeX output verified not to trigger tabu.sty bug in tables
+	  when built using doxygen 1.8.20 and texlive-20230311.
+	* font/plane00/unifont-base.hex:
+	  - Modified several Greek and Coptic letters in the range U+0370..
+	    U+03FF: tonos moved down and to the left of capital vowels,
+	    some baselines and x-heights changed for consistency, etc.
+	* font/plane00csur:
+	  - Added Engsvanáli (U+E100..U+E14F) to plane00csur.hex.
+	  - Added Engsvanáli (U+E100..U+E14F) combining marks to
+	    plane00csur-combining.hex.
+	  - Removed U+E13F from unassigned-ranges.txt.
+	* font/plane01/plane01.hex:
+	  - Modified U+1F494 (Broken Heart) and U+1F498 (Heart with Arrow).
+
+2023-05-21  Paul Hardy <unifoundry@unifoundry.com>
+	* Version 15.0.03.
+	* Makefile:
+	  - Moved the "doxygen" target.
+	  - Install unifont_all-$(VERSION).hex as $(PKGDEST)/unifont_all.hex.
+	  - Install unifont.pdf Texinfo file in $(PKGDEST) directory.
+	  - No longer install doxygen LaTeX build files in $(PKGDEST).
+	* font/Makefile:
+	  - Added Unicode Plane 3 glyphs (Chinese biang at U+30EDD and U+30EDE,
+	    and Japanese Taito at U+3106C) to unifont_jp-$(VERSION).hex.
+	  - Changed temporary 15.0.02 test coding to $(VERSION).
+	  - Fixed generation of compiled/plane00.html.
+	  - No longer compress unifont_all-$(VERSION).hex, given that
+	    unifont_jp-$(VERSION).hex is not compressed.
+	  - Install unifont_all.hex in the $(PKGDEST) directory.
+	* src/Makefile: Fixed a typo that could cause "make install" to fail
+	  [Savannah bug #64228].
+
+2023-05-20  Paul Hardy <unifoundry@unifoundry.com>
+	* Version 15.0.02.
+	* Doxyfile: added for Doxygen annotation of C sources.
+	* INSTALL: updated with doxygen documentation build instructions.
+	* Makefile:
+	  - Added support for Doxygen documentation generation with
+	    the command "make doxygen".
+	  - Uncommented "install" target lines that install text files
+	    in $(PKGDEST).
+	  - "install" target now installs Doxygen files in $(PKGDEST).
+	  - "install" target installs unifont_jp.hex in $(PKGDEST)
+	    [Savannah bug #63134].
+	  - Removed VPATH, as it is not needed.  It could be needed in the
+	    future if any files from the "lib" directory are required.
+	* doxygen:
+	  - Created new output directory for Doxygen documentation.
+	  - doxygen/html/index.html contains browsable web documentation.
+	  - doxygen/unifont-doxy.pdf contains hyperlinked PDF documentation.
+	  - Building the Doxygen output requires the doxygen, graphviz,
+	    and texlive packages.
+	  - The PDF output uses XeLaTeX with the "xeCJK" and "times" packages.
+	* font/Makefile:
+	  - Defined USRDIR variable as "usr" by default and employed this
+	    definition in console font and PCF font installation.  The
+	    definition can be overridden in a calling Makefile or on the
+	    command line to "usr/local" or other desired alternate path.
+	  - Defined PREFIX variable as $(DESTDIR)/$(USRDIR) and used it
+	    in path for font installation locations.
+	  - Created "truetype" and "opentype" targets to allow building
+	    TrueType and OpenType font files separately.
+	  - Moved OpenType font creation from "ttf", "csurttf", and
+	    "upperttf" targets to "otf", "csurotf", and "upperotf"
+	    targets, respectively.
+	  - Added "sampleotf" target to make Plane 0 non-Japanese,
+	    Plane 0 Japanese, and Plane 1 sample book type OpenType fonts
+	    with combining circles.  This is in preparation for eventually
+	    removing TrueType font builds from the default build.
+	  - Changed "OTFDEST" variable from "$(FONTDEST)/truetype/unifont"
+	    to "$(FONTDEST)/opentype/unifont" [Savannah bug #63072].
+	  - Set "OTFSRC" variable to point to new "font/otfsrc" directory.
+	  - Added "hex-stamp" target so the now separate OpenType and
+	    TrueType font builds do not invoke the "hex" target redundantly.
+	  - Removed VPATH definition, with paths now being more explicit.
+	  - Updated "precompiled" and "install" targets to reflect new
+	    OpenType font files.
+	  - Modified building of unifont_all-$(VERSION).hex to include
+	    Plane 2 and Plane 3 Chinese glyphs, and gzip it.
+	  - Updated "distclean" to remove new "hex-stamp" file with
+	    "\rm -f *-stamp".
+	  - "clean" target no longer removes font files under "font/compiled".
+	  - Updated ".PHONY" target, removing "compiled" and "precompiled";
+	    touch "font/compiled" and "font/precompiled" directories when
+	    updated, to determine modification of their build dependencies.
+	  - Added creation of unifont_jp-$(VERSION).bdf and
+	    unifont_jp-$(VERSION).pcf upon request.
+	  - Added Unicode Plane 2 and Plane 3 support for additional
+	    Chinese ideographs.
+	  - Created subdirectories for Plane 2 and Plane 3 Chinese glyphs.
+	* font/coverage.dat:
+	  - Updated ranges for CSUR/UCSUR scripts Amman-Iar, Streich,
+	    and Xaîni.
+	  - Updated for Plane 3 and above.
+	* font/otfsrc/Makefile: New file in new "font/otfsrc" directory
+	  to build OpenType fonts.
+	* font/plane00/unifont-base.hex:
+	  - Modified U+0123 to look more like the Latvian 'g' with cedilla.
+	  - Modified U+0369, U+1DD4, and U+1DE7 from proposed changes by
+	    Richard Becker.
+	  - Johnnie Weaver modified Czech and Slovak glyphs U+010F,
+	    U+013E, and U+0165.
+	  - Johnnie Weaver adjusted U+26CA TURNED BLACK SHOGI PIECE.
+	  - Adjusted heights of U+3001 and U+3002.
+	  - Modified U+FE35 and U+FE36 to be vertical parentheses instead of
+	    tortoise shell brackets.
+	  - Incorporated Wen Quan Yi double-width glyphs into U+FFxx
+	    with some modifications.
+	  - Moved U+FFFC to plane00-nonprinting.hex and changed its
+	    dotted outline to match the others.
+	* font/plane00/wqy.hex:
+	  - 湖 远星 modified U+9FC4, U+9FC6, U+9FCA, U+9FFA, and U+9FFF.
+	* font/plane00csur/Makefile:
+	  - Updated so individually built component .hex files remain
+	    after distclean.
+	  - No longer create "all" temporary subdirectory.
+	  - No longer have an "all" "phony" target.
+	* font/plane00csur/plane00csur-combining.txt:
+	  - Removed unnecessary entries E05C, E05D, E06D, and E06E.
+	* font/plane00csur/plane00csur.hex:
+	  - Added Thelwik (U+E380..U+E3AF).
+	* font/plane01/Makefile:
+	  - Updated so individually built component .hex files remain
+	    after distclean.
+	  - No longer have an "all" "phony" target.
+	* font/plane00csur/plane00csur-nonprinting.hex: Created empty file
+	  as a placeholder.
+	* font/plane01/plane01-space.hex: Renamed from font/plane01/space.hex.
+	* font/plane01/plane01.hex:
+	  - New skunk glyph (U+1F9A8) contributed by Curtis Mackie.
+	  - Johnnie Weaver modified Cypro-Minoan glyph U+12FDF.
+	* font/plane02/izmg16-plane02.hex
+	  - Inserted preceding '0' so all code points are six digits long.
+	* font/plane02/zh-plane02.hex:
+	  - Created file with ideographs contributed by 湖 远星.
+	* font/plane03/zh-plane03.hex:
+	  - Created file with ideographs contributed by 湖 远星.
+	  - Added biang ideographs with permission of their creator, Ming Fan.
+	* font/plane0E:
+	  - Makefile no longer creates "all" temporary subdirectory.
+	  - Removed Tags from plane0E-nonprinting.hex.
+	  - Added plane0E-unassigned.hex.
+	* font/ttfsrc/Makefile:
+	  - No longer invokes OpenType font builds, only TrueType font
+	    builds.  OpenType fonts are now built in the newly-created
+	    "font/otfsrc" directory.
+	  - Updated "distclean" target to no longer check for "*.otf" files.
+	  - Updated ".PHONY" target.
+	* src:
+	  - Annotated .c and .h files for Doxygen support.
+	  - Added mainpage.dox file for Doxygen support.
+	* src/Makefile:
+	  - Removed PNGPROGS variable, as it was empty.
+	  - Use LOCALBINDIR value for location of C and Perl program binaries.
+	  - Removed VPATH, as it is not needed.  It could be needed in the
+	    future if any files from the "lib" directory are required.
+	* src/hex2otf.c, src/hex2otf.h:
+	  - Extensive Doxygen annotations added.
+	  - Temporary workarounds to the Doxygen LaTeX build handling Chinese:.
+	    o Changed "何志翔 (He Zhixiang)" to "He Zhixiang" in comments.
+	    o Changed UTF-8 characters in --version message to "\uxxxx" form.
+	* src/hexmerge: Extended for use above Plane 0 by Paul Hardy;
+	  bug reported by Curtis Mackie.
+
 2022-09-13  Paul Hardy <unifoundry@unifoundry.com>
 	* Version 15.0.01.
 	* font/Makefile:
@@ -313,7 +679,7 @@
 	    U+1D24, U+23B7, U+2E49, U+A789, U+FBD9, U+FBDA, and FC05 (Savannah
 	    Bugs 58787, 58839, 58843, 58882, 58967, 59046, and 59175).
 	  - Numerous changes to re-align glyphs vertically for improved
-	    line drawing, as described in the remainder of this seciton
+	    line drawing, as described in the remainder of this section
 	    (Savannah service request 110281).
 	  - Paul Hardy modified the Arrows range (U+2190..U+21FF) to
 	    align dominant middle horizontal lines on row 7, counting
@@ -383,7 +749,7 @@
 	    glyphs: U+1467..U+146A, U+1541, U+158E, U+158F, U+15B0..U+15B3,
 	    U+1656..U+1659, U+165D..U+1660, U+1669..U+166C, U+18B8..U+18BA
 	    (Savannah bug 58262).
-	* font/ttfsrc/Makefile, following recomendations of Ken Lunde:
+	* font/ttfsrc/Makefile, following recommendations of Ken Lunde:
 	  - Replaced "(C)" in copyright string with the Unicode code point
 	    U+00A9.  (The copyright string in font/Makefile still uses
 	    "(C)" though for creating BDF fonts, in case there is a BDF
@@ -430,7 +796,7 @@
 	  - Added Katakana glyphs (U+30A0..U+30FF) from izmg16 font.
 	  - Paul Hardy drew U+309F (HIRAGANA DIGRAPH YORI).
 	* font/plane00/unifont-base.hex:
-	  - Made U+1FBE (prosgeggrameni) a little taller and shifted to left.
+	  - Made U+1FBE (prosgegrammeni) a little taller and shifted to left.
 	  - Changed U+2CCE and U+2CCF (Coptic) to single-width glyphs.
 	  - Johnnie Weaver redrew U+A650 and U+A651 to be single-width.
 	  - David Corbett modified U+2720 (MALTESE CROSS) to look like
@@ -501,7 +867,7 @@
 	* font/plane01/*: other files added for combining marks and
 	  filler glyphs as appropriate.
 	* font/plane01/unassigned-ranges.txt: Added comment at start of
-	  file noting that code point rangs in that file are for areas
+	  file noting that code point ranges in that file are for areas
 	  of Plane 1 within assigned script ranges that have unassigned
 	  code points.  This file is then used to generate filler glyphs
 	  in the file font/plane01/plane01-unassigned.hex.
@@ -528,7 +894,7 @@
 	    (U+1E100..U+1E14F) (Savannah bug 56753).
 	  - David Corbett improved some Duployan glyphs
 	    (U+1BC00..U+1BC9F) (Savannah bug 56772).
-	  - Lowered Somboyo glyph U+11A9A as it is not a combining glyph.
+	  - Lowered Soyombo glyph U+11A9A as it is not a combining glyph.
 	    Submitted by David Corbett (Savannah bug 56773).
 	  - Removed stray pixels in three Soyombo glyphs
 	    (U+11A52, U+11A53, and U+11A5B) (Savannah bug 57250).
@@ -543,7 +909,7 @@
 	* font/plane00/alt/README: created file to explain directory
 	  contents, including some historical notes about their existence.
 	* font/plane00/alt/reiwa-vertical.hex: added alternative vertical
-	  rendering of Reiwa Era glypy, U+32FF.
+	  rendering of Reiwa Era glyph, U+32FF.
 	* font/plane00/unifont-base.hex:
 	  - David Corbett adjusted glyph spacing of:
 	     - U+1900..U+194F Limbu
@@ -748,7 +1114,7 @@
 	  - Create font/compiled/unifont_upper-$(VERSION).bmp in addition to
 	    font/compiled/unifont-$(VERSION).bmp.
 	  - Updated generation of compiled/coverage.txt to cover all glyphs
-	    in Unifont, extending beyone Plane 0 and including the ConScript
+	    in Unifont, extending beyond Plane 0 and including the ConScript
 	    Unicode Registry (CSUR) Private Use Area glyphs.
 	* font/coverage.dat:
 	  - Updated for Unicode 11.0.0 and included unassigned ranges (Savannah
@@ -819,12 +1185,12 @@
 	* font/plane0Fcsur/plane0Fcsur-nonprinting.hex: Created this file for
 	  accurate script completion counts with unicoverage program.
 	* man/unicoverage.1: Updated to reflect new ability to handle
-	  all of Unicode, not just Plane 0.  Also updated doc/unicoverate.texi.
+	  all of Unicode, not just Plane 0.  Also updated doc/unicoverage.texi.
 	* src/hexkinya: fixed comments; made script executable (Savannah bug
 	  54377).
 	* src/unibmp2hex.c:
 	  - Added Dogra (U+11800..U+1184F) as double width.
-	  - Added Makasar (U+11EE0..U+11EFF) as dobule width.
+	  - Added Makasar (U+11EE0..U+11EFF) as double width.
 	* src/unicoverage.c: Added support for coverage checking beyond
 	  Unicode Plane 0.
 	* src/unifont-viewer: added GPL 2 license header
@@ -1150,14 +1516,14 @@
 	    except in hangul/Makefile.
 	  - Changed "font/plane00/bmp-combining.txt" in files where
 	    it occurred to "font/plane00/plane00-combining.txt".
-	* *-comining.txt: now have "<code-point> ':' <x-offset>".
+	* *-combining.txt: now have "<code-point> ':' <x-offset>".
 	  This two-field format now allows the unidup utility to
 	  check the *-combining.txt files for duplicate code points
 	  in addition to checking *.hex files for duplicates.
 	* ChangeLog: ascribed work to "Anonymous1" by request.
 	* doc: rebuilt texinfo files from modified man pages.
 	* Makefile:
-	  - Moved "*nonpringing.hex" files from ZEROWIDTH variable
+	  - Moved "*nonprinting.hex" files from ZEROWIDTH variable
 	    definition to HEXWIDTH variable definition, so the
 	    unigenwidth utility will no longer treat them as
 	    zero-width glyphs.  They will be invisible in a
@@ -1536,7 +1902,7 @@
 	    letter 'O' following multiple requests.
 	  - Increased height of U+0220 to Latin cap height.
 	  - Unified Canadian Aboriginal Syllabics (U+1400..U+167F) and
-	    Unified Canadian Aboriginal Syllabics Exnteded (U+18B0..U+18FF)
+	    Unified Canadian Aboriginal Syllabics Exntended (U+18B0..U+18FF)
 	    redrawn; this was precipitated by The Unicode Consortium changing
 	    a number of those glyphs.
 	  - Rotated Mongolian script as per Unicode change to switch from
@@ -1599,7 +1965,7 @@
 	    - Enclosed Ideographic Supplement:
 	      - Modified U+01F210, U+01F221, U+01F231, U+01F23A
 	      - Added    U+01F23B
-	* man/unifont.5: changed typo "exmaple" to "example".
+	* man/unifont.5: changed typo "example" to "example".
 	* man/*.[15]: changed "-" to "\-".
 	* src/unibmp2hex.c: added new scripts to force to double-width;
 	  Unified Canadian Aboriginal Syllabics and Extended block are now
@@ -1607,7 +1973,7 @@
 	* src/unicoverage.c: removed non-supported "-p" flag and empty
 	  example from help printout.
 	* src/unifontpic.c: changed header string from "8.0" to "9.0".
-	* src/unigenwidth.c: changed typo "tihs" to "this".
+	* src/unigenwidth.c: changed typo "this" to "this".
 
 2015-06-28 Paul Hardy <unifoundry@unifoundry.com>
 
@@ -1639,7 +2005,7 @@
 	  - Anonymous1 drew U+9FCD..U+9FD5, new in Unicode 8.0.
 	  - Moved U+2FF* to unifont-base.hex following modification; see above.
 	* font/plane01/noscript-ranges.txt: updated to remove scripts that are
-	  new in Uniocde 8.0.0.  "noscript-hex.txt" is generated from this.
+	  new in Unicode 8.0.0.  "noscript-hex.txt" is generated from this.
 	* font/plane01/plane01.hex:
 	  - Paul Hardy added the scripts Linear A, Palmyrene, Nabataean, Hatran,
 	    Meroitic Cursive, Manichaean, Old Hungarian, Mahajani, Sharada,
@@ -1814,7 +2180,7 @@
 	  - Properly marks fonts with glyphs above Plane 0 as "Unicode"
 	    instead of "UnicodeBmp".
 	  - Explicitly defines glyphs for ".notdef", ".null", and
-	    "nonmarkingreturn" rather than use the Fontforge-supplied defaults.
+	    "nonmarkingreturn" rather than use the FontForge-supplied defaults.
 	  - Calculate exact number of glyphs in the font for BeginChars entry.
 	  - Moved pixel-outlining portion to a separate subroutine, "outline".
 	  - Add "uni" prefix to StartChar description of code points.
@@ -1859,7 +2225,7 @@
 	    and U+269C.
 	  - Anonymous1 and Paul Hardy redrew U+262F (yin-yang).
 	* font/plane01/plane01.hex:
-	  - Paul Hardy added [in order of appearance in Uniocde Plane 1 /
+	  - Paul Hardy added [in order of appearance in Unicode Plane 1 /
 	    the SMP]: Meroitic Hieroglyphs, Meroitic Cursive, Avestan,
 	    Inscriptional Parthian, Inscriptional Pahlavi, Psalter Pahlavi,
 	    Old Turkic, Rumi Numeral Symbols, Brahmi, Kaithi, Kana Supplement,
@@ -2055,7 +2421,7 @@
 	* font/plane0E: added scripts contributed by Andrew Miller: Tags and
 	  Variation Selectors Supplement.
 	* font/plane0Fcsur: added glyphs from Michael Everson's ConScript
-	  Unicode Registry (CSUR) contriubted by Andrew Miller: Kinya Syllables.
+	  Unicode Registry (CSUR) contributed by Andrew Miller: Kinya Syllables.
 	* font/psf: added directory with files to build new PSF font version,
 	  to allow APL use under GNU/Linux in console mode.
 	* font/ttfsrc: simplified directory to only contain a Makefile;

@@ -1,4 +1,4 @@
-#' Load Unifont font
+#' Load GNU Unifont font
 #'
 #' The function `unifont()` loads in several GNU Unifont hex files as a
 #' single [bittermelon::bm_font()] object.
@@ -57,4 +57,17 @@ unifont <- function(upper = TRUE, jp = FALSE, csur = TRUE, sample = FALSE, ucp =
         font <- c(font, do.call(c, csur_fonts))
     }
     font
+}
+
+#' GNU Unifont version number
+#'
+#' The function `unifont_version()` returns the GNU Unifont version number
+#' this package packed their `hex` files from.
+#'
+#' @return The Unifont version number as a [numeric_version()] class.
+#' @examples
+#' unifont_version()
+#' @export
+unifont_version <- function() {
+    numeric_version("15.1.04")
 }

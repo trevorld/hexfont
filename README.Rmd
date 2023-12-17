@@ -14,13 +14,13 @@
 
 ## <a name="overview">Overview</a>
 
-This is an R data package that includes every "hex" font file from the [GNU Unifont](http://unifoundry.com/unifont/index.html) project compressed by `xz`.  It includes a convenience function that loads several of them as a [{bittermelon}](https://github.com/trevorld/bittermelon) `bm_font()` object.  GNU Unifont is a duospaced bitmap font (8x16 and 16x16 glyphs) that pretty much covers all of the official Unicode glyphs plus several of the artificial scripts in the [(Under-)ConScript Unicode Registry](http://www.kreativekorp.com/ucsur/).
+This is an R data package that includes most "hex" font files from the [GNU Unifont](http://unifoundry.com/unifont/index.html) project compressed by `xz`.  It includes a convenience function that loads several of them as a [{bittermelon}](https://github.com/trevorld/bittermelon) `bm_font()` object.  GNU Unifont is a duospaced bitmap font (8x16 and 16x16 glyphs) that pretty much covers all of the official Unicode glyphs plus several of the artificial scripts in the [(Under-)ConScript Unicode Registry](http://www.kreativekorp.com/ucsur/).
 
 ## <a name="hex">Included hex font files</a>
 
-`{hexfont}` includes all the hex font files included in the [GNU Unifont](http://unifoundry.com/unifont/index.html)
+`{hexfont}` includes most of the hex font files included in the [GNU Unifont](http://unifoundry.com/unifont/index.html)
 source code distribution.  The version number is stripped from the file names in the `precompiled` directory and
-the hex fonts are all compressed by `xz` but other than that the hex fonts are otherwise unchanged.
+the hex fonts are all compressed by `xz` but other than that the hex fonts are otherwise unchanged.  Due to CRAN size limitations we omit the "precompiled" `unifont_all` hex file (this is presumably the concatenation of the "precompiled" `unifont` and `unifont_upper` hex files).
 
 ```{r included}
 hex_dir <- system.file("font", package = "hexfont")
@@ -83,8 +83,8 @@ bml |> bm_compose(pua_combining = unifont_combining()) |>
 The overall license for this package is GPL (>=2) but the bundled hex font files 
 are also available under more permissive terms.  Excerpt from `font/COPYING` 
 
-> License for font/plane00/jiskan16-plane00.hex and
-> font/plane02/jiskan16-plane02.hex:
+> License for `font/plane00/jiskan16-plane00.hex` and
+> `font/plane02/jiskan16-plane02.hex`:
 > 
 >      These two files are in the Public Domain.  They were created
 >      from Public Domain BDF font files jiskan16-2004-1.bdf and

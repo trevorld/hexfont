@@ -2,4 +2,5 @@
 
 export(unifont)
 export(unifont_combining)
+export(unifont_version)
 import(bittermelon)
