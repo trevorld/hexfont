@@ -14,11 +14,11 @@
 
 ## <a name="overview">Overview</a>
 
-This is an R data package that includes most "hex" font files from the [GNU Unifont](http://unifoundry.com/unifont/index.html) project compressed by `xz`.  It includes a convenience function that loads several of them as a [{bittermelon}](https://github.com/trevorld/bittermelon) `bm_font()` object.  GNU Unifont is a duospaced bitmap font (8x16 and 16x16 glyphs) that pretty much covers all of the official Unicode glyphs plus several of the artificial scripts in the [(Under-)ConScript Unicode Registry](http://www.kreativekorp.com/ucsur/).
+This is an R data package that includes most "hex" font files from the [GNU Unifont](https://unifoundry.com/unifont/index.html) project compressed by `xz`.  It includes a convenience function that loads several of them as a [{bittermelon}](https://github.com/trevorld/bittermelon) `bm_font()` object.  GNU Unifont is a duospaced bitmap font (8x16 and 16x16 glyphs) that pretty much covers all of the official Unicode glyphs plus several of the artificial scripts in the [(Under-)ConScript Unicode Registry](https://www.kreativekorp.com/ucsur/).
 
 ## <a name="hex">Included hex font files</a>
 
-`{hexfont}` includes most of the hex font files included in the [GNU Unifont](http://unifoundry.com/unifont/index.html)
+`{hexfont}` includes most of the hex font files included in the [GNU Unifont](https://unifoundry.com/unifont/index.html)
 source code distribution.  The version number is stripped from the file names in the `precompiled` directory and
 the hex fonts are all compressed by `xz` but other than that the hex fonts are otherwise unchanged.  Due to CRAN size limitations we omit the "precompiled" `unifont_all` hex file (this is presumably the concatenation of the "precompiled" `unifont` and `unifont_upper` hex files).
 
@@ -59,18 +59,19 @@ list.files(hex_dir, pattern = ".hex.xz", recursive = TRUE)
 ## [28] "plane01/space.hex.xz"                      
 ## [29] "plane02/izmg16-plane02.hex.xz"             
 ## [30] "plane02/zh-plane02.hex.xz"                 
-## [31] "plane03/zh-plane03.hex.xz"                 
-## [32] "plane0E/plane0E-nonprinting.hex.xz"        
-## [33] "plane0E/plane0E-unassigned.hex.xz"         
-## [34] "plane0E/plane0E.hex.xz"                    
-## [35] "plane0Fcsur/plane0Fcsur-nonprinting.hex.xz"
-## [36] "plane0Fcsur/plane0Fcsur.hex.xz"            
-## [37] "precompiled/unifont_jp_sample.hex.xz"      
-## [38] "precompiled/unifont_jp.hex.xz"             
-## [39] "precompiled/unifont_sample.hex.xz"         
-## [40] "precompiled/unifont_upper_sample.hex.xz"   
-## [41] "precompiled/unifont_upper.hex.xz"          
-## [42] "precompiled/unifont.hex.xz"
+## [31] "plane03/jp-plane03.hex.xz"                 
+## [32] "plane03/zh-plane03.hex.xz"                 
+## [33] "plane0E/plane0E-nonprinting.hex.xz"        
+## [34] "plane0E/plane0E-unassigned.hex.xz"         
+## [35] "plane0E/plane0E.hex.xz"                    
+## [36] "plane0Fcsur/plane0Fcsur-nonprinting.hex.xz"
+## [37] "plane0Fcsur/plane0Fcsur.hex.xz"            
+## [38] "precompiled/unifont_jp_sample.hex.xz"      
+## [39] "precompiled/unifont_jp.hex.xz"             
+## [40] "precompiled/unifont_sample.hex.xz"         
+## [41] "precompiled/unifont_upper_sample.hex.xz"   
+## [42] "precompiled/unifont_upper.hex.xz"          
+## [43] "precompiled/unifont.hex.xz"
 ```
 
 ## <a name="examples">Examples</a>
@@ -95,7 +96,7 @@ system.time(font <- unifont()) # Unifont is a **big** font
 
 ```
 ##    user  system elapsed 
-## 102.734   0.248 103.002
+## 147.807   0.190 148.030
 ```
 
 ``` r
@@ -103,7 +104,7 @@ length(font) |> prettyNum(big.mark = ",") # number of glyphs
 ```
 
 ```
-## [1] "123,234"
+## [1] "125,472"
 ```
 
 ``` r
@@ -111,7 +112,7 @@ object.size(font) |> format(units = "MB") # memory used
 ```
 
 ```
-## [1] "196.5 Mb"
+## [1] "198.7 Mb"
 ```
 
 ``` r
@@ -121,7 +122,7 @@ system.time(font <- unifont(cache = TRUE))
 
 ```
 ##    user  system elapsed 
-##   0.676   0.004   0.680
+##   0.758   0.000   0.758
 ```
 
 ``` r
@@ -132,7 +133,7 @@ system.time(font_s <- unifont(ucp = str2ucp(s)))
 
 ```
 ##    user  system elapsed 
-##   0.645   0.000   0.646
+##   0.740   0.000   0.739
 ```
 
 ``` r

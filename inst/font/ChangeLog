@@ -1,9 +1,242 @@
+2024-12-01  Paul Hardy <unifoundry@gmail.com>
+	* Version 16.0.02.
+	* font/plane00/unifont-base.hex:
+	  - Johnnie Weaver modified Cherokee glyph U+13C9 and
+	    Cherokee Supplement glyph U+AB99.
+	* font/plane00/wqy.hex:
+	  - 湖 远星 modified U+6A37 to match the change effective as of
+	    Unicode 6.0.
+	  - 湖 远星 fixed errors in U+60C5 and U+6669.
+	* font/plane01/plane01.hex:
+	  - U+10880..U+108AF (Nabataean) and U+108E0..U+108FF (Hatran):
+	    Johnnie Weaver modified many glyphs so these scripts are now
+	    completely half-width.
+	  - U+11380..U+113FF (Tulu-Tigalari) Paul Hardy modified several
+	    glyphs, with recommendations from David Corbett.
+	  - U+11F5A: Paul Hardy modified the strokes to resemble U+11F49.
+	    Thanks to David Corbett for suggesting this.
+	  - U+18B2D: Xiao_Akatsuki (晓晓_Akatsuki) fixed a missing
+	    vertical stroke.
+	  - U+1F232: 湖 远星 added more space between left and right sides.
+	* font/plane01/plane01-combining.txt
+	  - Paul Hardy removed U+113D1 (Tulu-Tigalari REPHA).  Thanks to
+	    David Corbett for noticing that.
+	* font/plane02/plane02-zh.hex:
+	  - Hayden Wong modified four ideographs to fit within
+	    15 columns: U+20083, U+20087, U+20089, and U+200B4.
+	  - 晓晓 Akatsuki contributed the missing glyphs in U+207xx.
+	  - 湖 远星 modified U+28A0F, U+28B4E, U+2CB5B, and U+2CB73
+	    to be 15 columns wide.
+	  - Hayden Wong completed U+29D00..U+29DFF.
+	  - Hayden Wong added U+2B64E, which is an incorrect variant
+	    of U+513A (儺).
+	  - Removed U+2C7EC glyph; it was the glyph for U+2CE7C.
+	    Thanks to Boris Zhang for noticing that.
+
+2024-09-10  Paul Hardy <unifoundry@gmail.com>
+	* Version 16.0.01.
+	* font/Makefile:
+	  - Backed out changes from Unifont 15.1.04, which broke building
+	    on Macs.
+	  - Added creation of unifont-combining-$(VERSION).txt to
+	    include combining data for all glyphs.
+	    [Savannah Support Request #110954]
+	  - Removed use of files unifont_jp-plane0[23].hex and
+	    unifont_zh-plane0[23].hex, which are replaced with
+	    new files jp-upper.hex and zh-upper.hex, respectively.
+	  - Invoke new shell script font/build-cjk-upper to build
+	    sets of upper-plane Chinese and Japanese variants.
+	  - Prepare "plane02-zh" and "plane03-zh" glyphs from a
+	    superset of all available Chinese-variant glyphs plus
+	    glyphs from JIS X 0213 that do not have Chinese versions
+	    drawn in Unifont.  The full set of these glyphs are
+	    taken from the newly-constructed file compiled/zh++.hex.
+	  - Use the above-mentioned ZH and JP glyph supersets to form
+	    the unifont_plane2_zh-16.0.01.bmp, unifont_plane2_jp-16.0.01.bmp,
+	    and unifont_plane3_zh-16.0.01.bmp images.
+	  - Added "thumbnails" target to create "bigpic" target thumbnails
+	    using ImageMagick's "convert" program.
+	* font/build-cjk-upper:
+	  - Added new shell script to build Plane 2 and Plane 3 elements
+	    of CJK glyphs, with Japanese and Chinese variants.
+	* font/coverage.dat: updated for Unicode 16.0.0.
+	* font/plane00/unifont-base.hex:
+	  - Moved U+0000..U+001F glyphs to plane00-nonprinting.hex.
+	  - David Corbett contributed Arabic Extended-B glyph U+0897.
+	  - Johnnie Weaver:
+	    o Modiified Cherokee glyphs U+13C9 and U+AB99.
+	    o Changed these glyphs to half-width:
+	      U+210E, U+210F, U+212E, U+212F, U+2300, U+2329, U+232A, U+2610,
+	      U+2611, U+2612, U+2713, U+2717, U+A728, U+A729, U+A732, U+A733,
+	      U+A734, U+A735, U+A736, U+A737, U+A738, U+A739, U+A73A, U+A73B,
+	      U+A73C, U+A73D, U+A74E, U+A74F, U+A758, U+A759, U+A771, U+A772,
+	      U+A773, U+A774, U+A775, U+A776, U+A777, U+A797, U+A7C2 & U+A7C3.
+	  - Added Balinese glyphs U+1B4E, U+1B4F, and U+1B7F.
+	  - Added Cyrillic Extended-C glyphs U+1C89 and U+1C8A.
+	  - Added U+211F, accidentally deleted in Unifont 15.1.05.
+	  - Modified U+213D DOUBLE-STRUCK SMALL GAMMA following
+	    suggestion of anonymous1.
+	  - Rebecca Bettencourt contributed Control Pictures glyphs
+	    U+2427..U+2429.
+	  - Boris Zhang redrew the Suzhou Numerals six through nine
+            (U+3026..U+3029).  [Glyph names are incorrectly called
+	    Hangzhou Numerals in the Unicode Standard, but their names
+	    cannot be changed even though incorrect].
+	  - Yzy32767 redrew the Bopomofo glyphs (U+3105..U+312F) in
+	    a Kai (楷) style.
+	  - 湖 远星 drew CJK Strokes glyphs for U+31D2 (modified
+	    in Unicode 16.0.0), and the new glyphs U+31E4 and U+31E5.
+	  - Added Hangul Filler glyph U+3164 back after accidental deletion.
+	  - Made U+A797 one pixel taller to match height of U+0062 ('b');
+	    thanks to David Corbett for noticing that.
+	  - Added Latin Extended-D glyphs U+A7CB..U+A7CD, U+A7DA..U+A7DC.
+	* font/plane00/wqy.hex:
+	  - Hayden Wong modified U+3862 per Unicode 15.1.0 change.
+	  - Changed the Japanese glyph U+5909 from a Japanese style to
+	    the original simplified Chinese version in Wen Quan Yi now
+	    that Unifont has separate Japanese and Chinese variants.
+	    Thanks to anonymous1 for recommending this change.
+	* font/plane00csur:
+	  - Rebecca Bettencourt contributed glyphs for Herman Miller's
+	    previously missing scripts in the range U+E400..U+E59F.
+	  - Rebecca Bettencourt contributed glyphs for Amlin (U+E6D0..U+E6EF).
+	  - Rebecca Bettencourt contributed two missing Unifon glyphs:
+	    U+E6FD and U+E73D.
+	  - Danae Dekker contributed glyphs for two scripts that he
+	    created: Cylenian (U+EC00..U+EC2F) and Syrrin (U+EC30..U+EC6F).
+	    Rebecca Bettencourt has added these scripts to the UCSUR.
+	  - Moved Whitaker Hexadecimal Numerals to U+ECF0..U+ECFF, per
+	    the latest UCSUR assignment.
+	  - Rebecca Bettencourt contributed Graflect glyphs (U+EC70..U+ECEF).
+	* font/plane01/plane01.hex:
+	  - Johnnie Weaver contributed:
+	    o U+10D40..U+10D8E Garay.
+	    o U+105C0..U+105FF Todhri
+	    o U+11BC0..U+11BFF Sunuwar
+	    o U+16D40..U+16D7F Kirat Rai
+	    o Khitan Small Script: modified U+18BD2 and added U+18CFF.
+	    o U+1E5D0..U+1E5FF Ol Onal.  
+	  - David Corbett contributed new Arabic Extended-C glyphs
+	    U+10EC2..U+10EC4 and U+10EFC.
+	  - Added Tulu-Tigalari glyphs U+11380..U+113E2.
+	  - Added Myanmar Extended-C glyphs U+116D0..U+116E3.
+	  - Added Kawi glyph U+11F5A.
+	  - Rebecca Bettencourt contributed glyphs for the new range
+	    Symbols for Legacy Computing Supplement (U+1CC00..U+1CEB3).
+	  - anonymous1 contributed U+1F200 and U+1F483.
+	  - Rebecca Bettencourt contributed the new glyphs in Supplemental
+	    Arrows-C,(U+1F8B2..U+1F8BB, U+1F8C0, and U+1F8C1).
+	  - Added new glyphs in Symbols and Pictographs Extended-A: U+1FA89,
+	    U+1FA8F, U+1FABE, U+1FAC6, U+1FADC, U+1FADF, and U+1FAE9.
+	  - Rebecca Bettencourt contributed the new glyphs in Symbols for
+	    Legacy Computing (U+1FBCB..U+1FBEF).
+	* font/plane02/zh-plane02.hex:
+	  - Hayden Wong contributed U+20020..U+2004F and U+29E00..U+2A0FF.
+	  - twuchiutann contributed U+20050..U+2073F.
+	  - Boris Zhang redrew CJK Unified Ideographs Extension D glyphs
+	    U+2B75F and U+2B76B.
+	  - Boris Zhang redrew CJK Unified Ideographs Extension I glyphs
+	    U+2B7EF, U+2EC1F, U+2EC20, U+2EC21, U+2EC2F, U+2EC6F, U+2ECBF,
+	    U+2ECEC, and U+2ED42.
+	  - 湖 远星 contributed the following glyphs, which are common
+	    in Cantonese, Hokkien, Hakka, etc., from a list given in
+	    the Ichiten font.
+            o CJK Unified Ideographs Extension B glyphs:
+	      U+203B7 𠎷, U+20546 𠕆, U+20584 𠖄, U+205FB 𠗻, U+207A9 𠞩,
+	      U+207AD 𠞭, U+20803 𠠃, U+2081D 𠠝, U+20895 𠢕, U+20BD7 𠯗,
+	      U+20C41 𠱁, U+20CBF 𠲿, U+20CD4 𠳔, U+20D5D 𠵝, U+20D71 𠵱,
+	      U+20DA7 𠶧, U+20E76 𠹶, U+20E98 𠺘, U+20ED8 𠻘, U+20F3B 𠼻,
+	      U+20F7E 𠽾, U+21014 𡀔, U+210AB 𡂫, U+210F6 𡃶, U+21145 𡅅,
+	      U+2176D 𡝭, U+217D3 𡟓, U+2180D 𡠍, U+21883 𡢃, U+2197C 𡥼,
+	      U+21C2A 𡰪, U+21CA2 𡲢, U+21CDE 𡳞, U+21DD1 𡷑, U+21F0F 𡼏,
+	      U+221A1 𢆡, U+22399 𢎙, U+224DC 𢓜, U+2251B 𢔛, U+22775 𢝵,
+	      U+22AB1 𢪱, U+22AE6 𢫦, U+22BED 𢯭, U+22BFE 𢯾, U+22C4B 𢱋,
+	      U+22C62 𢱢, U+22C64 𢱤, U+22CB4 𢲴, U+22CB8 𢲸, U+22CC6 𢳆,
+	      U+22CEA 𢳪, U+22D80 𢶀, U+22F0C 𢼌, U+22F1B 𢼛, U+23073 𣁳,
+	      U+23074 𣁴, U+23350 𣍐, U+236BA 𣚺, U+236EE 𣛮, U+23B88 𣮈,
+	      U+23CA9 𣲩, U+23EF8 𣻸, U+23F0E 𣼎, U+240D2 𤃒, U+241AC 𤆬,
+	      U+24259 𤉙, U+242B6 𤊶, U+2430D 𤌍, U+24352 𤍒, U+24364 𤍤,
+	      U+24419 𤐙, U+24430 𤐰, U+24605 𤘅, U+2479A 𤞚, U+24C8D 𤲍,
+	      U+24D80 𤶀, U+24D83 𤶃, U+24E01 𤸁, U+24E31 𤸱, U+24E85 𤺅,
+	      U+24EA7 𤺧, U+24EAA 𤺪, U+25148 𥅈, U+2517E 𥅾, U+2531A 𥌚,
+	      U+25349 𥍉, U+25435 𥐵, U+2546E 𥑮, U+257C7 𥟇, U+25BDF 𥯟,
+	      U+25BE5 𥯥, U+25C14 𥰔, U+25D0A 𥴊, U+25E86 𥺆, U+2624E 𦉎,
+	      U+26293 𦊓, U+26706 𦜆, U+267EA 𦟪, U+2688A 𦢊, U+2690E 𦤎,
+	      U+26E05 𦸅, U+2725F 𧉟, U+27304 𧌄, U+27371 𧍱, U+27486 𧒆,
+	      U+277F0 𧟰, U+279A0 𧦠, U+27A63 𧩣, U+27B2A 𧬪, U+27B99 𧮙,
+	      U+27EF4 𧻴, U+27FC1 𧿁, U+27FEC 𧿬, U+27FF3 𧿳, U+280BE 𨂾,
+	      U+280BF 𨂿, U+280E9 𨃩, U+280F0 𨃰, U+28154 𨅔, U+282CD 𨋍,
+	      U+2837D 𨍽, U+2838A 𨎊, U+28487 𨒇, U+28595 𨖕, U+28891 𨢑,
+	      U+28D99 𨶙, U+28E39 𨸹, U+2945D 𩑝, U+2947E 𩑾, U+294E5 𩓥,
+	      U+296A8 𩚨, U+296E9 𩛩, U+29704 𩜄, U+29730 𩜰, U+29D71 𩵱,
+	      U+29DD3 𩷓, U+29E19 𩸙, U+29E36 𩸶, U+29EAC 𩺬, U+29F27 𩼧,
+	      U+29F30 𩼰, U+29F48 𩽈, U+29F70 𩽰, U+2A04E 𪁎, U+2A0BA 𪂺,
+	      U+2A1E1 𪇡, U+2A41E 𪐞, U+2A590 𪖐, U+2A612 𪘒, and U+2A64A 𪙊
+            o CJK Unified Ideographs Extension C glyphs:
+	      U+2A736 𪜶, U+2AE5A 𪹚, and U+2B4A2 𫒢
+            o CJK Unified Ideographs Extension E glyphs:
+	      U+2B8C6 𫣆, U+2C816 𬠖, and U+2C9B0 𬦰.
+	* font/plane03/jp-plane03.hex: Added glyph for U+3106C that
+	  had been in font/plane03/zh-plane03.hex.
+	* font/plane03/zh-plane03.hex:
+	  - twuchiutann modified the original U+30EDD and U+30EDE
+	    (biang) to differentiate between traditional and simplified
+	    Chinese versions.
+	  - 湖 远星 contributed the following glyphs, which are common
+	    in Cantonese, Hokkien, Hakka, etc., from a list given in
+	    the Ichiten font.
+	    o CJK Unified Ideographs Extension G glyphs:
+	      U+301DB 𰇛, U+308FB 𰣻, and U+30E6C 𰹬
+	    o CJK Unified Ideographs Extension H glyph: U+31C7F 𱱿. 
+	  - Moved U+03106C to new file, font/plane03/jp-plane03.hex.
+	* font/plane0Fcsur:
+	  - Drew glyphs for Sitelen Pona Radicals (U+F1C80..U+F1C9C).
+	  - Rebecca Bettencourt contributed glyphs for Derani
+	    (U+F16B0..U+F16DF).
+	  - Rebecca Bettencourt contributed glyphs for Sadalian
+	    (U+F2000..U+F267F).
+
+2024-02-24  Paul Hardy <unifoundry@gmail.com>
+	* Version 15.1.05.
+	* font/plane00/unifont-base.hex:
+	  - Ho-seok Ee contributed replacement Hangul glyphs to match
+	    the style of the Hangul Syllables range in these ranges:
+	    o U+1100..U+11FF Hangul Jamo
+	    o U+3130..U+318F Hangul Compatibility Jamo
+	    o U+A960..U+A97F Hangul Jamo Extended-A
+	    o U+D7B0..U+D7FF Hangul Jamo Extended-B
+	  - Hayden Wong contributed 11 redrawn Letterlike Symbols:
+	    U+210A, U+210B, U+2110, U+2112, U+211B, U+212C, U+212F,
+	    U+2130, U+2131, U+2133, and U+2134.
+	  - Johnnie Weaver contributed U+013D LATIN CAPITAL LETTER L WITH
+	    CARON, to more closely resemble the glyphs he drew for better
+	    Czech and Slovak support.  He also redrew Miscellaneous Symbols
+	    musical notation glyphs U+266D, U+266E, U+266F, and the
+	    glyph U+26BC, SESQUIQUADRATE.
+	* font/plane02/zh-plane02.hex:
+	  - Added 529 new glyphs contributed by 湖 远星, Boris Zhang, and
+	    Yzy32767, including:
+	    o 281 Cantonese ideographs from 湖 远星.
+	    o The 222 CJK Unified Ideographs Extension D, U+2B740..U+2B81D
+	      from Boris Zhang and Yzy32767.
+	    o Improvements to CJK Unified Ideographs Extension I by Boris
+	      Zhang and Yzy32767.
+	* font/plane03/zh-plane02.hex:
+	  - 54 Cantonese ideographs from 湖 远星.
+	* font/plane0Fcsur: Sitelen Pona modified to match the latest chart
+	  updates at https://www.kreativekorp.com/ucsur/charts/sitelen.html
+	  (thanks to kije Enki for mentioning the discrepancies):
+	  - U+F1992..U+F199B changed to be combining glyphs.
+	  - U+F1995..U+F199B nonprinting code points modified.
+	  - Added U+F199C SITELEN PONA MIDDLE DOT and U+F199D SITELEN
+	    PONA COLON.
+
 2023-10-29  Paul Hardy <unifoundry@gmail.com>
 	* Version 15.1.04
 	* Makefile: ignore error in Doxygen building.
 	* doxygen/new_header.tex: change to run LaTeX in non-stop mode.
 	* font/Makefile: Modified construction of unifont_upper and
-	  unifont_upper to have larger supersets of Plane 2 and Plane 3
+	  unifont_upper_jp to have larger supersets of Plane 2 and Plane 3
 	  glyphs.
 	* font/plane00/unifont-base.hex:
 	  Johnnie Weaver updated U+266D, U+266E, U+266F, and U+26BC.
@@ -398,7 +631,7 @@
 	    o Devanagari Extended-A (U+11B00..U+11B5F).
 	    o Kawi (U+11F00..U+11F5F).
 	    o Kaktovik Numerals (U+1D2C0..U+1D2DF).
-	    o Cyrillic Exntended-D (U+1E030..U+1E08F).
+	    o Cyrillic Extended-D (U+1E030..U+1E08F).
 	    o Transport and Map Symbol glyph U+1F6DC.
 	    o Alchemical Symbols (U+1F700..U+1F77F).
 	    o Geometric Shapes Extended glyph U+1F7D9.
@@ -1902,7 +2135,7 @@
 	    letter 'O' following multiple requests.
 	  - Increased height of U+0220 to Latin cap height.
 	  - Unified Canadian Aboriginal Syllabics (U+1400..U+167F) and
-	    Unified Canadian Aboriginal Syllabics Exntended (U+18B0..U+18FF)
+	    Unified Canadian Aboriginal Syllabics Extended (U+18B0..U+18FF)
 	    redrawn; this was precipitated by The Unicode Consortium changing
 	    a number of those glyphs.
 	  - Rotated Mongolian script as per Unicode change to switch from
@@ -1965,7 +2198,7 @@
 	    - Enclosed Ideographic Supplement:
 	      - Modified U+01F210, U+01F221, U+01F231, U+01F23A
 	      - Added    U+01F23B
-	* man/unifont.5: changed typo "example" to "example".
+	* man/unifont.5: changed typo in "example".
 	* man/*.[15]: changed "-" to "\-".
 	* src/unibmp2hex.c: added new scripts to force to double-width;
 	  Unified Canadian Aboriginal Syllabics and Extended block are now
@@ -1973,7 +2206,7 @@
 	* src/unicoverage.c: removed non-supported "-p" flag and empty
 	  example from help printout.
 	* src/unifontpic.c: changed header string from "8.0" to "9.0".
-	* src/unigenwidth.c: changed typo "this" to "this".
+	* src/unigenwidth.c: changed typo in "this".
 
 2015-06-28 Paul Hardy <unifoundry@unifoundry.com>
 

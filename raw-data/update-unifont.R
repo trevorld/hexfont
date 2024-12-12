@@ -1,4 +1,4 @@
-src_dir <- "raw-data/src/unifont-15.1.04"
+src_dir <- "raw-data/src/unifont-16.0.02"
 tar_dir <- "inst/font"
 
 for (doc in c("ChangeLog", "OFL-1.1.txt", "COPYING", "README"))
