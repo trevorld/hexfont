@@ -4,7 +4,14 @@
 \alias{unifont}
 \title{Load GNU Unifont font}
 \usage{
-unifont(upper = TRUE, jp = FALSE, csur = TRUE, sample = FALSE, ucp = NULL)
+unifont(
+  upper = TRUE,
+  jp = FALSE,
+  csur = TRUE,
+  sample = FALSE,
+  ucp = NULL,
+  cache = FALSE
+)
 }
 \arguments{
 \item{upper}{Include glyphs above the Unicode Basic Multilingual plane.}
@@ -17,9 +24,14 @@ unifont(upper = TRUE, jp = FALSE, csur = TRUE, sample = FALSE, ucp = NULL)
 
 \item{ucp}{Character vector of Unicode Code Points: glyphs not in this vector won't be read in.
 If \code{NULL} (default) read every glyph in the font.}
+
+\item{cache}{Use a cached version of this font from \code{tools::R_user_dir("hexfont", "cache")} if it exists.
+If it does not exist than create a cached version of this font.}
 }
 \value{
 A \code{\link[bittermelon:bm_font]{bittermelon::bm_font()}} object.
+If \code{cache} is \code{TRUE} then as a side effect may create an \code{.rds} file
+in \code{tools::R_user_dir("hexfont", "cache")}.
 }
 \description{
 The function \code{unifont()} loads in several GNU Unifont hex files as a
@@ -41,5 +53,15 @@ if (require("bittermelon")) {
   font <- unifont(ucp = str2ucp(s))
   bm <- as_bm_bitmap(s, font = font)
   print(bm, px = px_ascii)
+}
+
+\donttest{# Will take more than 5s on CRAN machines
+# Compiling the entire font from the hex files takes a long time
+system.time({font <- unifont()})
+length(font) |> prettyNum(big.mark = ",") # number of glyphs
+# It is usually much faster to use a cached version of the font
+if (file.exists(hexfont:::unifont_cache_filename())) {
+  system.time({font_from_cache <- unifont(cache = TRUE)})
+}
 }
 }

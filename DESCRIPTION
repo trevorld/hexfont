@@ -1,8 +1,8 @@
 Package: hexfont
 Type: Package
 Title: 'GNU Unifont' Hex Fonts
-Version: 0.4.0
-Authors@R: c(person("Trevor L", "Davis", role=c("aut", "cre"),
+Version: 0.5.0-1
+Authors@R: c(person("Trevor L.", "Davis", role=c("aut", "cre"),
              email="trevor.l.davis@gmail.com",
              comment = c(ORCID = "0000-0001-6341-4639")),
              person("GNU Unifont authors", role = "cph"))
@@ -10,9 +10,10 @@ Description: Contains most of the hex font files from the 'GNU Unifont Project' 
 URL: https://github.com/trevorld/hexfont
 BugReports: https://github.com/trevorld/hexfont/issues
 License: GPL (>= 2)
-Imports: bittermelon (>= 1.1.2), utils
+Depends: R (>= 4.0.0)
+Imports: bittermelon (>= 1.1.2), tools, utils
 Suggests: knitr, oblicubes, rmarkdown, testthat, Unicode
 VignetteBuilder: knitr, rmarkdown
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1

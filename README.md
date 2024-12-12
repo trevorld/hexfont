@@ -1,7 +1,7 @@
 # hexfont <img src="man/figures/logo.png" align="right" width="200px" alt="hexfont hex sticker">
 
 [![CRAN Status Badge](https://www.r-pkg.org/badges/version/hexfont)](https://cran.r-project.org/package=hexfont)
-[![R-CMD-check](https://github.com/trevorld/hexfont/workflows/R-CMD-check/badge.svg)](https://github.com/trevorld/hexfont/actions)
+[![R-CMD-check](https://github.com/trevorld/hexfont/actions/workflows/R-CMD-check.yaml/badge.svg?branch=main)](https://github.com/trevorld/hexfont/actions)
 
 ### Table of Contents
 
@@ -23,7 +23,7 @@ source code distribution.  The version number is stripped from the file names in
 the hex fonts are all compressed by `xz` but other than that the hex fonts are otherwise unchanged.  Due to CRAN size limitations we omit the "precompiled" `unifont_all` hex file (this is presumably the concatenation of the "precompiled" `unifont` and `unifont_upper` hex files).
 
 
-```r
+``` r
 hex_dir <- system.file("font", package = "hexfont")
 list.files(hex_dir, pattern = ".hex.xz", recursive = TRUE)
 ```
@@ -84,34 +84,21 @@ The main function `unifont()` loads in several GNU Unifont hex files at the same
 | csur | Include (Under-)Conscript Unicode Registry glyphs | `TRUE` |
 | sample | Add circle to "Combining" characters | `FALSE` | 
 | ucp | Character vector of Unicode Code Points to only load | `NULL` |
+| cache | Read/write a pre-compiled font from/to `tools::R_user_dir("hexfont", "cache")` | `FALSE` |
 
 
-```r
-library("bittermelon") # remotes::install_github("trevorld/bittermelon")
-```
-
-```
-## 
-## Attaching package: 'bittermelon'
-```
-
-```
-## The following object is masked from 'package:base':
-## 
-##     which
-```
-
-```r
-library("hexfont") # remotes::install_github("trevorld/hexfont")
+``` r
+library("bittermelon")
+library("hexfont")
 system.time(font <- unifont()) # Unifont is a **big** font
 ```
 
 ```
 ##    user  system elapsed 
-##  96.170   0.103  96.292
+## 102.734   0.248 103.002
 ```
 
-```r
+``` r
 length(font) |> prettyNum(big.mark = ",") # number of glyphs
 ```
 
@@ -119,26 +106,25 @@ length(font) |> prettyNum(big.mark = ",") # number of glyphs
 ## [1] "123,234"
 ```
 
-```r
+``` r
 object.size(font) |> format(units = "MB") # memory used
 ```
 
 ```
-## [1] "189 Mb"
+## [1] "196.5 Mb"
 ```
 
-```r
+``` r
 # Faster to load from a cache
-saveRDS(font, "unifont.rds")
-system.time(font <- readRDS("unifont.rds"))
+system.time(font <- unifont(cache = TRUE))
 ```
 
 ```
 ##    user  system elapsed 
-##    0.65    0.00    0.65
+##   0.676   0.004   0.680
 ```
 
-```r
+``` r
 # Or just load the subset of GNU Unifont you need
 s <- "Ｒ很棒！"
 system.time(font_s <- unifont(ucp = str2ucp(s)))
@@ -146,10 +132,10 @@ system.time(font_s <- unifont(ucp = str2ucp(s)))
 
 ```
 ##    user  system elapsed 
-##   0.606   0.004   0.610
+##   0.645   0.000   0.646
 ```
 
-```r
+``` r
 # Mandarin Chinese
 as_bm_bitmap(s, font = font_s) |>
     bm_compress("v")
@@ -166,7 +152,7 @@ as_bm_bitmap(s, font = font_s) |>
 ##                    █  █▀     ▀▀    █      █
 ```
 
-```r
+``` r
 # Emoji
 as_bm_bitmap("🐭🐲🐵", font = font) |>
     bm_compress("v")
@@ -183,7 +169,7 @@ as_bm_bitmap("🐭🐲🐵", font = font) |>
 ##                   ▀▀▀     ▀▀▀
 ```
 
-```r
+``` r
 # Klingon
 as_bm_list("", font = font) |>
     bm_pad(type = "trim", left = 1L, right = 1L) |>
@@ -202,7 +188,7 @@ as_bm_list("", font = font) |>
 ## 
 ```
 
-```r
+``` r
 # Tengwar with combining glyphs
 bml <- as_bm_list("", font = font)
 to_raise <- which(names(bml) %in% c("U+E04A", "U+E04E"))
