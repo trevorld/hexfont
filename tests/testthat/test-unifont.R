@@ -8,7 +8,7 @@ test_that("unifont() works", {
         font <- unifont(ucp = str2ucp(s))
         bm <- as_bm_bitmap(s, font = font)
         print(bm)
-    })
+    }, unicode = TRUE)
 
     # Emoji
     verify_output("txt/emoji.txt", {
@@ -16,5 +16,5 @@ test_that("unifont() works", {
         font <- unifont(ucp = str2ucp(s))
         bm <- as_bm_bitmap(s, font = font)
         print(bm)
-    })
+    }, unicode = TRUE)
 })

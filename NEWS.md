@@ -1,3 +1,11 @@
+hexfont 0.5.0
+=============
+
+* `unifont()`'s new argument `cache` allows one to read/write precompiled versions of the fonts
+  from/to `tools::R_user_dir("hexfont", "cache")` (#8).
+  It is **much** faster to read such a cached pre-compiled font than recompile it from scratch.
+  `{hexfont}` now depends on R (>= 4.0.0) (which was when `tools::R_user_dir()` was introduced).
+
 hexfont 0.4.0
 =============
 

@@ -1,7 +1,7 @@
 # hexfont <img src="man/figures/logo.png" align="right" width="200px" alt="hexfont hex sticker">
 
 [![CRAN Status Badge](https://www.r-pkg.org/badges/version/hexfont)](https://cran.r-project.org/package=hexfont)
-[![R-CMD-check](https://github.com/trevorld/hexfont/workflows/R-CMD-check/badge.svg)](https://github.com/trevorld/hexfont/actions)
+[![R-CMD-check](https://github.com/trevorld/hexfont/actions/workflows/R-CMD-check.yaml/badge.svg?branch=main)](https://github.com/trevorld/hexfont/actions)
 
 ### Table of Contents
 
@@ -38,17 +38,17 @@ The main function `unifont()` loads in several GNU Unifont hex files at the same
 | csur | Include (Under-)Conscript Unicode Registry glyphs | `TRUE` |
 | sample | Add circle to "Combining" characters | `FALSE` | 
 | ucp | Character vector of Unicode Code Points to only load | `NULL` |
+| cache | Read/write a pre-compiled font from/to `tools::R_user_dir("hexfont", "cache")` | `FALSE` |
 
 ```{r unifont, output.class = "bitmap"}
-library("bittermelon") # remotes::install_github("trevorld/bittermelon")
-library("hexfont") # remotes::install_github("trevorld/hexfont")
+library("bittermelon")
+library("hexfont")
 system.time(font <- unifont()) # Unifont is a **big** font
 length(font) |> prettyNum(big.mark = ",") # number of glyphs
 object.size(font) |> format(units = "MB") # memory used
 
 # Faster to load from a cache
-saveRDS(font, "unifont.rds")
-system.time(font <- readRDS("unifont.rds"))
+system.time(font <- unifont(cache = TRUE))
 
 # Or just load the subset of GNU Unifont you need
 s <- "Ｒ很棒！"
