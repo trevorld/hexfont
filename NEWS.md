@@ -1,4 +1,4 @@
-hexfont 0.5.0
+hexfont 0.5.1
 =============
 
 * `unifont()`'s new argument `cache` allows one to read/write precompiled versions of the fonts
