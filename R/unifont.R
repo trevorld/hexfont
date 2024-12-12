@@ -110,5 +110,5 @@ unifont_cache_filename <- function(upper = TRUE, jp = FALSE, csur = TRUE, sample
 #' unifont_version()
 #' @export
 unifont_version <- function() {
-    numeric_version("15.1.04")
+    numeric_version("16.0.02")
 }
