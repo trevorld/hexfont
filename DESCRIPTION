@@ -1,7 +1,7 @@
 Package: hexfont
 Type: Package
 Title: 'GNU Unifont' Hex Fonts
-Version: 1.0.0-0
+Version: 1.0.0
 Authors@R: c(person("Trevor L.", "Davis", role=c("aut", "cre"),
              email="trevor.l.davis@gmail.com",
              comment = c(ORCID = "0000-0001-6341-4639")),
