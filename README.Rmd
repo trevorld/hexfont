@@ -43,7 +43,7 @@ The main function `unifont()` loads in several GNU Unifont hex files at the same
 ```{r unifont, output.class = "bitmap"}
 library("bittermelon")
 library("hexfont")
-system.time(font <- unifont()) # Unifont is a **big** font
+system.time(font <- unifont(cache = FALSE)) # Unifont is a **big** font
 length(font) |> prettyNum(big.mark = ",") # number of glyphs
 object.size(font) |> format(units = "MB") # memory used
 

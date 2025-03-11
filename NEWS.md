@@ -1,3 +1,11 @@
+hexfont 1.0.0
+=============
+
+* Update examples to not use the R 4.1 pipe (so the package works on R 4.0) (#12).
+* `unifont()`'s `cache` argument now defaults to `getOption("unifont.cache", NULL)` and
+  if `cache = NULL` we now read in a cache file if it exists but if it does not
+  exist then we don't write a cache file.
+
 hexfont 0.5.1
 =============
 

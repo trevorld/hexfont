@@ -8,8 +8,13 @@
 #' @param csur Include (Under-)Conscript Unicode Registry glyphs.
 #' @param sample Add circle to "Combining" characters.
 #' @inheritParams bittermelon::read_hex
-#' @param cache Use a cached version of this font from `tools::R_user_dir("hexfont", "cache")` if it exists.
-#'              If it does not exist than create a cached version of this font.
+#' @param cache If `TRUE` read a cached version of this font from
+#'              `tools::R_user_dir("hexfont", "cache")` if it exists and
+#'              if it does not exist than create a cached version of this font.
+#'              If `FALSE` don't read or write a cached version of this font (even if it exists).
+#'              If `NULL` read a cached version of this font if it exists but if it
+#'              does not exist then don't create it.
+#'              This argument is ignored if `ucp` is not `NULL`.
 #' @return A [bittermelon::bm_font()] object.
 #'         If `cache` is `TRUE` then as a side effect may create an `.rds` file
 #'         in `tools::R_user_dir("hexfont", "cache")`.
@@ -33,9 +38,9 @@
 #'
 #' \donttest{# Will take more than 5s on CRAN machines
 #' # Compiling the entire font from the hex files takes a long time
-#' system.time({font <- unifont()})
-#' length(font) |> prettyNum(big.mark = ",") # number of glyphs
-#  object.size(font) |> format(units = "MB") # memory used
+#' system.time(font <- unifont(cache = FALSE))
+#' prettyNum(length(font), big.mark = ",") # number of glyphs
+#  format(object.size(font), units = "MB") # memory used
 #' # It is usually much faster to use a cached version of the font
 #' if (file.exists(hexfont:::unifont_cache_filename())) {
 #'   system.time({font_from_cache <- unifont(cache = TRUE)})
@@ -43,10 +48,12 @@
 #' }
 #' @import bittermelon
 #' @export
-unifont <- function(upper = TRUE, jp = FALSE, csur = TRUE, sample = FALSE, ucp = NULL, cache = FALSE) {
-    stopifnot(is.null(ucp) || isFALSE(cache))
+unifont <- function(upper = TRUE, jp = FALSE, csur = TRUE, sample = FALSE, ucp = NULL,
+                    cache = getOption("unifont.cache", NULL)) {
+    f <- unifont_cache_filename(upper, jp, csur, sample)
+    if (is.null(cache))
+        cache <- file.exists(f)
     if (cache) {
-        f <- unifont_cache_filename(upper, jp, csur, sample)
         if (file.exists(f)) {
             font <- readRDS(f)
         } else {
