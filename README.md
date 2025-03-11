@@ -91,7 +91,7 @@ The main function `unifont()` loads in several GNU Unifont hex files at the same
 ``` r
 library("bittermelon")
 library("hexfont")
-system.time(font <- unifont()) # Unifont is a **big** font
+system.time(font <- unifont(cache = FALSE)) # Unifont is a **big** font
 ```
 
 ```

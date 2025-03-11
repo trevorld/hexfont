@@ -1,6 +1,6 @@
 test_that("unifont() works", {
-
     skip_on_os("windows")
+    skip_if_not(l10n_info()[["UTF-8"]])
 
     # Mandarin Chinese
     verify_output("txt/mandarin.txt", {

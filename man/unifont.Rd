@@ -10,7 +10,7 @@ unifont(
   csur = TRUE,
   sample = FALSE,
   ucp = NULL,
-  cache = FALSE
+  cache = getOption("unifont.cache", NULL)
 )
 }
 \arguments{
@@ -25,8 +25,13 @@ unifont(
 \item{ucp}{Character vector of Unicode Code Points: glyphs not in this vector won't be read in.
 If \code{NULL} (default) read every glyph in the font.}
 
-\item{cache}{Use a cached version of this font from \code{tools::R_user_dir("hexfont", "cache")} if it exists.
-If it does not exist than create a cached version of this font.}
+\item{cache}{If \code{TRUE} read a cached version of this font from
+\code{tools::R_user_dir("hexfont", "cache")} if it exists and
+if it does not exist than create a cached version of this font.
+If \code{FALSE} don't read or write a cached version of this font (even if it exists).
+If \code{NULL} read a cached version of this font if it exists but if it
+does not exist then don't create it.
+This argument is ignored if \code{ucp} is not \code{NULL}.}
 }
 \value{
 A \code{\link[bittermelon:bm_font]{bittermelon::bm_font()}} object.
@@ -57,8 +62,8 @@ if (require("bittermelon")) {
 
 \donttest{# Will take more than 5s on CRAN machines
 # Compiling the entire font from the hex files takes a long time
-system.time({font <- unifont()})
-length(font) |> prettyNum(big.mark = ",") # number of glyphs
+system.time(font <- unifont(cache = FALSE))
+prettyNum(length(font), big.mark = ",") # number of glyphs
 # It is usually much faster to use a cached version of the font
 if (file.exists(hexfont:::unifont_cache_filename())) {
   system.time({font_from_cache <- unifont(cache = TRUE)})
